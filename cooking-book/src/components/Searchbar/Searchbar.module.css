@@ -11,7 +11,7 @@ input {
     max-width: 50%;
     margin-top: 3rem;
     text-align: center;
-    border: 1px solid var(--orange-color);
+    border: 3px solid var(--orange-color);
     border-radius: 25px;
     font-size: 3rem;
 }
