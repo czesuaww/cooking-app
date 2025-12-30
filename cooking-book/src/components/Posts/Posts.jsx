@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import Post from "../Post/Post";
+import PropertiesContext from "../context/PropertiesContext";
 
-const Posts = (props) => {
+const Posts = () => {
+    const recepies = useContext(PropertiesContext);
+
     return (
         <>
-            {props.posts.length > 0 ? (
+            {recepies.posts.length > 0 ? (
                 <div className="posts-list">
-                    {props.posts.map(post => (
+                    {recepies.posts.map(post => (
                         <Post key={post.id} {...post} />
                     ))}
                 </div>
@@ -15,7 +19,6 @@ const Posts = (props) => {
                     <p>Spróbuj wpisać inną nazwę dania</p>
                 </div>
             }
-            {console.log(props.children, 'children')}
         </>
     );
 };

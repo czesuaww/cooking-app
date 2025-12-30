@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import './Searchbar.module.css';
 import style from './Searchbar.module.css';
+import PropertiesContext from "../context/PropertiesContext";
 
-const Searchbar = (props) => {
+const Searchbar = () => {
+    const searchContext = useContext(PropertiesContext);
     const [term, setTerm] = useState('');
 
     const search = (e) => setTerm(e.target.value)
 
-    const searchRecepie = () => props.onSearch(term);
+    const searchRecepie = () => searchContext.onSearch(term);
 
-    const enterSearch = (e) => e.key === 'Enter' ? props.onSearch(term) : null;
+    const enterSearch = (e) => e.key === 'Enter' ? searchContext.onSearch(term) : null;
 
     return (
         <>

@@ -6,6 +6,8 @@ import Searchbar from './components/Searchbar/Searchbar'
 import Posts from './components/Posts/Posts'
 import ThemeContext from './components/context/ThemeContext'
 import { useReducer } from 'react'
+import BestPost from './components/BestPost/BestPost'
+import PropertiesContext from './components/context/PropertiesContext'
 
 const postsPL = [
   {
@@ -74,6 +76,13 @@ const reducer = (state, action) => {
   }
 }
 
+const randomRecepieFun = () => {
+  const randomIndex = Math.floor(Math.random() * postsPL.length);
+  return postsPL[randomIndex]
+}
+
+const randomRecepie = randomRecepieFun();
+
 function App() {
 
   const [state, dispatch] = useReducer(reducer, initState)
@@ -88,23 +97,30 @@ function App() {
         background: state.background,
         changeColor: changeTheme
       }}>
-        <Layout
-          container={
-            <Container >
-              <Searchbar onSearch={onSearch} />
-              {state.posts.length > 0
-                ?
-                <Posts posts={state.posts} />
-                :
-                <div className="empty-state">
-                  <h2 style={{ color: state.color, background: state.background }}>🔍Enter the name of the dish</h2>
-                  <p style={{ color: state.color, background: state.background }}>We'll find the best recipes for you!</p>
-                </div>
-              }
-            </Container>
-          }
-        >
-        </Layout>
+        <PropertiesContext.Provider value={{
+          recipe: randomRecepie,
+          onSearch: onSearch,
+          posts: state.posts
+        }}>
+          <Layout
+            container={
+              <Container >
+                <BestPost />
+                <Searchbar />
+                {state.posts.length > 0
+                  ?
+                  <Posts />
+                  :
+                  <div className="empty-state">
+                    <h2 style={{ color: state.color, background: state.background }}>🔍Enter the name of the dish</h2>
+                    <p style={{ color: state.color, background: state.background }}>We'll find the best recipes for you!</p>
+                  </div>
+                }
+              </Container>
+            }
+          >
+          </Layout>
+        </PropertiesContext.Provider>
       </ThemeContext.Provider>
     </>
   )
