@@ -1,5 +1,6 @@
  .container,
  .aboutContainer {
+     position: relative;
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -10,7 +11,7 @@
  .header {
      text-align: center;
      font-size: 5rem;
-     padding: 3rem 0;
+     padding: 6rem 0;
  }
 
  .aboutContainer {
