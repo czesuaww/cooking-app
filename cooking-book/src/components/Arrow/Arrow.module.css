@@ -1,0 +1,27 @@
+.arrow {
+    border: 1px solid var(--white-color);
+    border-width: 0px .3rem .3rem 0;
+    display: inline-block;
+    padding: 1.5rem;
+    margin-top: 8rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+    animation: fadeInDown 2s ease-in-out infinite;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(45deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(30px) rotate(45deg);
+    }
+}
