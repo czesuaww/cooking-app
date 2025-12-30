@@ -20,4 +20,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 
   --white-color: #fff;
+  --black-color: #000;
+  --orange-color: #f0bc00;
 }
