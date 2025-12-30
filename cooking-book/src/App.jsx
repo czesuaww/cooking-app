@@ -5,7 +5,6 @@ import Container from './components/Container/Container'
 import Searchbar from './components/Searchbar/Searchbar'
 import Posts from './components/Posts/Posts'
 import ThemeContext from './components/context/ThemeContext'
-import ThemeButton from './components/Themebutton/Themebutton'
 import { useReducer } from 'react'
 
 const postsPL = [
