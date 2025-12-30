@@ -7,8 +7,9 @@ const Searchbar = (props) => {
 
     const search = (e) => setTerm(e.target.value)
 
-
     const searchRecepie = () => props.onSearch(term);
+
+    const enterSearch = (e) => e.key === 'Enter' ? props.onSearch(term) : null;
 
     return (
         <>
@@ -17,6 +18,7 @@ const Searchbar = (props) => {
                 type="text"
                 placeholder="Search recepie e.g. Chicken masala..."
                 onChange={search}
+                onKeyDown={enterSearch}
                 value={term}
             />
             <button className={style.searchBtn} onClick={searchRecepie}>Search</button>
