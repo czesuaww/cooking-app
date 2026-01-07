@@ -8,6 +8,7 @@ import ThemeContext from './components/context/ThemeContext'
 import { useReducer } from 'react'
 import BestPost from './components/BestPost/BestPost'
 import PropertiesContext from './components/context/PropertiesContext'
+import AuthContext from './components/context/AuthContext'
 
 const postsPL = [
   {
@@ -44,7 +45,8 @@ const initState = {
   posts: [],
   poststsAll: postsPL,
   color: '#000',
-  background: '#fff'
+  background: '#fff',
+  user: null
 }
 
 const reducer = (state, action) => {
@@ -68,6 +70,18 @@ const reducer = (state, action) => {
         ...state,
         color: state.color === '#000' ? '#fff' : '#000',
         background: state.background === '#fff' ? '#000' : '#fff',
+      };
+    }
+    case 'log-in': {
+      return {
+        ...state,
+        user: true
+      };
+    }
+    case 'log-out': {
+      return {
+        ...state,
+        user: null
       };
     }
     default:
@@ -105,19 +119,25 @@ function App() {
         }}>
           <Layout
             container={
-              <Container >
-                <BestPost />
-                <Searchbar />
-                {state.posts.length > 0
-                  ?
-                  <Posts />
-                  :
-                  <div className="empty-state">
-                    <h2 style={{ color: state.color, background: state.background }}>🔍Enter the name of the dish</h2>
-                    <p style={{ color: state.color, background: state.background }}>We'll find the best recipes for you!</p>
-                  </div>
-                }
-              </Container>
+              <AuthContext.Provider value={{
+                isLogged: state.user,
+                logIn: () => { dispatch({ type: 'log-in' }) },
+                logOut: () => { dispatch({ type: 'log-out' }) }
+              }}>
+                <Container >
+                  <BestPost />
+                  <Searchbar />
+                  {state.posts.length > 0
+                    ?
+                    <Posts />
+                    :
+                    <div className="empty-state">
+                      <h2 style={{ color: state.color, background: state.background }}>🔍Enter the name of the dish</h2>
+                      <p style={{ color: state.color, background: state.background }}>We'll find the best recipes for you!</p>
+                    </div>
+                  }
+                </Container>
+              </AuthContext.Provider>
             }
           >
           </Layout>

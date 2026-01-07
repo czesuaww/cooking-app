@@ -6,8 +6,10 @@ import { faBurger } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import ThemeButton from '../Themebutton/Themebutton';
+
 const Container = (props) => {
     const theme = useContext(ThemeContext);
+
     return (
         <div id='container' className={style.container} style={{ color: theme.color, background: theme.background }}>
             <ThemeButton />

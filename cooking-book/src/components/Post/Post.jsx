@@ -1,5 +1,5 @@
 const Post = (props) => {
-    const { name, shortContent, longContent } = props
+    const { name, shortContent, longContent } = props;
     return (
         <>
             <div >
