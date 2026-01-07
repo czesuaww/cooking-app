@@ -4,6 +4,7 @@ import { faBrush } from '@fortawesome/free-solid-svg-icons'
 import ThemeContext from "../context/ThemeContext";
 import style from './ThemeButton.module.css';
 import AuthContainer from "../AuthContainer/AuthContainer";
+
 const ThemeButton = () => {
     const theme = useContext(ThemeContext)
 

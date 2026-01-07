@@ -46,7 +46,7 @@ const initState = {
   poststsAll: postsPL,
   color: '#000',
   background: '#fff',
-  user: null
+  user: false
 }
 
 const reducer = (state, action) => {
@@ -81,7 +81,7 @@ const reducer = (state, action) => {
     case 'log-out': {
       return {
         ...state,
-        user: null
+        user: false
       };
     }
     default:

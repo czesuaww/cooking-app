@@ -1,21 +1,25 @@
-import { useContext } from 'react';
-import AuthContext from '../context/AuthContext';
 import style from '../AuthContainer/AuthContainer.module.css';
+import useAuth from '../../hooks/useAuth';
 
 const AuthContainer = () => {
-    const auth = useContext(AuthContext);
+    const [user, setUser] = useAuth();
+    const logIn = () => setUser(true);
+    const logOut = () => setUser(false);
 
     return (
         <div className={style.container}>
-            {auth.isLogged
+            {user
                 ?
-                <button className={style.logOut} onClick={auth.logOut}>Wyloguj</button>
+                <>
+                    <button className={style.logOut} onClick={logOut}>Wyloguj</button>
+                </>
                 :
-                <button className={style.logIn} onClick={auth.logIn}>Zaloguj</button>
+                <>
+                    <button className={style.logIn} onClick={logIn}>Zaloguj</button>
+                </>
             }
         </div>
     )
-
 }
 
 export default AuthContainer;
