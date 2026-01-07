@@ -1,17 +1,16 @@
 import style from './Container.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons'
-import { faBowlFood } from '@fortawesome/free-solid-svg-icons'
-import { faBurger } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react';
-import ThemeContext from '../context/ThemeContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
+import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
+import { faBurger } from '@fortawesome/free-solid-svg-icons';
 import ThemeButton from '../Themebutton/Themebutton';
+import useTheme from '../../hooks/useTheme';
 
 const Container = (props) => {
-    const theme = useContext(ThemeContext);
+    const { textColor, bgColor } = useTheme();
 
     return (
-        <div id='container' className={style.container} style={{ color: theme.color, background: theme.background }}>
+        <div id='container' className={style.container} style={{ color: textColor, background: bgColor }}>
             <ThemeButton />
             <h1 className={style.header}>We have more than enough of what you looking for</h1>
             <div className={style.aboutContainer}>

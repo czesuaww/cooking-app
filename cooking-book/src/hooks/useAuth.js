@@ -11,7 +11,7 @@ const useAuth = () => {
             authContext.logOut();
         }
     }
-    return [authContext.logged, setUser]
+    return [authContext.isLogged, setUser]
 }
 
 export default useAuth;

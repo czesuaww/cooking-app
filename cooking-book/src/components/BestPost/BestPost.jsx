@@ -1,19 +1,18 @@
-import { useContext } from "react";
-import PropertiesContext from "../context/PropertiesContext";
 import useAuth from "../../hooks/useAuth";
+import useProperties from "../../hooks/useProperties";
 
 const BestPost = () => {
-    const bestRecepie = useContext(PropertiesContext)
     const [user] = useAuth();
+    const { recipe } = useProperties();
 
     return (
         <>
             <div >
                 <div>
-                    <h2>{bestRecepie.recipe.name}</h2>
+                    <h2>{recipe.name}</h2>
                     <div>
-                        <p>{bestRecepie.recipe.shortContent}</p>
-                        <p>{bestRecepie.recipe.longContent}</p>
+                        <p>{recipe.shortContent}</p>
+                        <p>{recipe.longContent}</p>
                         <p>Kod rabatowy na mikser: </p>
                         {user
                             ?

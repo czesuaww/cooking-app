@@ -1,18 +1,16 @@
-import { useContext } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBrush } from '@fortawesome/free-solid-svg-icons'
-import ThemeContext from "../context/ThemeContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBrush } from '@fortawesome/free-solid-svg-icons';
 import style from './ThemeButton.module.css';
 import AuthContainer from "../AuthContainer/AuthContainer";
+import useTheme from "../../hooks/useTheme";
 
 const ThemeButton = () => {
-    const theme = useContext(ThemeContext)
+    const { textColor, themeColor } = useTheme();
 
     return (
         <>
-            <FontAwesomeIcon className={style.icon} onClick={theme.changeColor} icon={faBrush} style={{ color: theme.color }} />
+            <FontAwesomeIcon className={style.icon} onClick={themeColor} icon={faBrush} style={{ color: textColor }} />
             <AuthContainer />
-            {/* <button onClick={theme.changeColor}>Change Color</button> */}
         </>
     )
 }

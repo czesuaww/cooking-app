@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import Post from "../Post/Post";
-import PropertiesContext from "../context/PropertiesContext";
+import useProperties from "../../hooks/useProperties";
 
 const Posts = () => {
-    const recepies = useContext(PropertiesContext);
+    const { posts } = useProperties();
 
     return (
         <>
-            {recepies.posts.length > 0 ? (
+            {posts.length > 0 ? (
                 <div className="posts-list">
-                    {recepies.posts.map(post => (
+                    {posts.map(post => (
                         <Post key={post.id} {...post} />
                     ))}
                 </div>
