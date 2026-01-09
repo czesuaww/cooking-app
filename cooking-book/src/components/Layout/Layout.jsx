@@ -1,7 +1,8 @@
 const Layout = (props) => {
-    const { container } = props;
+    const { container, header } = props;
     return (
         <>
+            {header}
             {container}
         </>
     )

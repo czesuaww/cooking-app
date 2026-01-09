@@ -3,8 +3,8 @@ import AuthContext from '../components/context/AuthContext';
 
 const useAuth = () => {
     const { isLogged, logIn, logOut } = useContext(AuthContext);
-    const user = isLogged;
-    useDebugValue(user, (user) => user ? 'Logged it' : 'Logged out');
+
+    useDebugValue(isLogged, (user) => user ? 'Logged it' : 'Logged out');
 
     const setUser = (value) => {
         if (value) {
@@ -13,7 +13,7 @@ const useAuth = () => {
             logOut();
         }
     }
-    return [user, setUser]
+    return [isLogged, setUser]
 }
 
 export default useAuth;

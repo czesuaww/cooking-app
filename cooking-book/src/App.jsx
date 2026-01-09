@@ -45,9 +45,6 @@ const postsPL = [
 const initState = {
   posts: [],
   poststsAll: postsPL,
-  color: '#000',
-  background: '#fff',
-  user: false
 }
 
 const reducer = (state, action) => {
@@ -82,10 +79,13 @@ const randomRecepie = randomRecepieFun();
 
 function App() {
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
-  const [theme, setTheme] = useLocalStorage('theme', [initState.color, initState.background]);
+  const [theme, setTheme] = useLocalStorage('theme', {
+    color: '#000',
+    background: '#fff'
+  });
   const [state, dispatch] = useReducer(reducer, initState)
   const onSearch = value => dispatch({ type: 'search-posts', payload: value })
-  // const changeTheme = () => dispatch({ type: 'change-color' })
+
   const changeTheme = () => {
     setTheme(prev => ({
       color: prev.color === '#000' ? '#fff' : '#000',
@@ -95,7 +95,6 @@ function App() {
 
   return (
     <>
-      <Header />
       <ThemeContext.Provider value={{
         color: theme.color,
         background: theme.background,
@@ -106,13 +105,14 @@ function App() {
           onSearch: onSearch,
           posts: state.posts
         }}>
-          <Layout
-            container={
-              <AuthContext.Provider value={{
-                isLogged: isLogged,
-                logIn: () => setIsLogged(true),
-                logOut: () => setIsLogged(false)
-              }}>
+          <AuthContext.Provider value={{
+            isLogged: isLogged,
+            logIn: () => setIsLogged(true),
+            logOut: () => setIsLogged(false)
+          }}>
+            <Layout
+              header={<Header />}
+              container={
                 <Container >
                   <BestPost />
                   <Searchbar />
@@ -126,10 +126,11 @@ function App() {
                     </div>
                   }
                 </Container>
-              </AuthContext.Provider>
-            }
-          >
-          </Layout>
+              }
+            >
+            </Layout>
+          </AuthContext.Provider>
+
         </PropertiesContext.Provider>
       </ThemeContext.Provider>
     </>
