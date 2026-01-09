@@ -3,6 +3,7 @@ import useAuth from '../../hooks/useAuth';
 
 const AuthContainer = () => {
     const [user, setUser] = useAuth();
+
     const logIn = () => setUser(true);
     const logOut = () => setUser(false);
 
@@ -11,11 +12,11 @@ const AuthContainer = () => {
             {user
                 ?
                 <>
-                    <button className={style.logOut} onClick={logOut}>Wyloguj</button>
+                    <button className={style.logOut} onClick={logOut}>Log out</button>
                 </>
                 :
                 <>
-                    <button className={style.logIn} onClick={logIn}>Zaloguj</button>
+                    <button className={style.logIn} onClick={logIn}>Log in</button>
                 </>
             }
         </div>

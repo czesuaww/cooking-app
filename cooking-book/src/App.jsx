@@ -9,6 +9,7 @@ import { useReducer } from 'react'
 import BestPost from './components/BestPost/BestPost'
 import PropertiesContext from './components/context/PropertiesContext'
 import AuthContext from './components/context/AuthContext'
+import useLocalStorage from './hooks/useLocalStorage'
 
 const postsPL = [
   {
@@ -65,25 +66,6 @@ const reducer = (state, action) => {
         posts: filteredPosts
       };
     }
-    case 'change-color': {
-      return {
-        ...state,
-        color: state.color === '#000' ? '#fff' : '#000',
-        background: state.background === '#fff' ? '#000' : '#fff',
-      };
-    }
-    case 'log-in': {
-      return {
-        ...state,
-        user: true
-      };
-    }
-    case 'log-out': {
-      return {
-        ...state,
-        user: false
-      };
-    }
     default:
       console.warn(`Unknown action: ${action.type}`);
       return state;
@@ -99,17 +81,24 @@ const randomRecepie = randomRecepieFun();
 
 
 function App() {
-
+  const [isLogged, setIsLogged] = useLocalStorage('log', false);
+  const [theme, setTheme] = useLocalStorage('theme', [initState.color, initState.background]);
   const [state, dispatch] = useReducer(reducer, initState)
   const onSearch = value => dispatch({ type: 'search-posts', payload: value })
-  const changeTheme = () => dispatch({ type: 'change-color' })
+  // const changeTheme = () => dispatch({ type: 'change-color' })
+  const changeTheme = () => {
+    setTheme(prev => ({
+      color: prev.color === '#000' ? '#fff' : '#000',
+      background: prev.background === '#fff' ? '#000' : '#fff'
+    }));
+  };
 
   return (
     <>
       <Header />
       <ThemeContext.Provider value={{
-        color: state.color,
-        background: state.background,
+        color: theme.color,
+        background: theme.background,
         changeColor: changeTheme
       }}>
         <PropertiesContext.Provider value={{
@@ -120,9 +109,9 @@ function App() {
           <Layout
             container={
               <AuthContext.Provider value={{
-                isLogged: state.user,
-                logIn: () => { dispatch({ type: 'log-in' }) },
-                logOut: () => { dispatch({ type: 'log-out' }) }
+                isLogged: isLogged,
+                logIn: () => setIsLogged(true),
+                logOut: () => setIsLogged(false)
               }}>
                 <Container >
                   <BestPost />
@@ -132,8 +121,8 @@ function App() {
                     <Posts />
                     :
                     <div className="empty-state">
-                      <h2 style={{ color: state.color, background: state.background }}>🔍Enter the name of the dish</h2>
-                      <p style={{ color: state.color, background: state.background }}>We'll find the best recipes for you!</p>
+                      <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
+                      <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
                     </div>
                   }
                 </Container>

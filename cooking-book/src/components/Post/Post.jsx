@@ -1,8 +1,9 @@
 import useAuth from "../../hooks/useAuth";
 
 const Post = (props) => {
-    const [user] = useAuth();
+    const user = useAuth();
     const { name, shortContent, longContent } = props;
+
     return (
         <>
             <div >
@@ -16,7 +17,7 @@ const Post = (props) => {
                             ?
                             <p>#KBCC123</p>
                             :
-                            <p>Zaloguj</p>
+                            <p>Log in</p>
                         }
                     </div>
                     <hr />

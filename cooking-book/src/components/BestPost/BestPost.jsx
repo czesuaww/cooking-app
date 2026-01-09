@@ -18,7 +18,7 @@ const BestPost = () => {
                             ?
                             <p>#KBCC123</p>
                             :
-                            <p>Zaloguj</p>
+                            <p>Log in</p>
                         }
                     </div>
                     <hr />

@@ -1,17 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useDebugValue } from 'react';
 import AuthContext from '../components/context/AuthContext';
 
 const useAuth = () => {
-    const authContext = useContext(AuthContext);
+    const { isLogged, logIn, logOut } = useContext(AuthContext);
+    const user = isLogged;
+    useDebugValue(user, (user) => user ? 'Logged it' : 'Logged out');
 
     const setUser = (value) => {
         if (value) {
-            authContext.logIn();
+            logIn();
         } else {
-            authContext.logOut();
+            logOut();
         }
     }
-    return [authContext.isLogged, setUser]
+    return [user, setUser]
 }
 
 export default useAuth;
