@@ -11,7 +11,7 @@ const LastSearchPost = (props) => {
                 ?
                 <div>
                     <button onClick={() => setDesc(false)}>Close</button>
-                    <h1>Here's the recipe I searched for recently. Enjoy! ;p</h1>
+                    <h1>Here's the recipe you searched for recently. Enjoy! ;p</h1>
                     <h2>{props.lastRec.name}</h2>
                     <p>{props.lastRec.shortContent}</p>
                     <p>{props.lastRec.longContent}</p>

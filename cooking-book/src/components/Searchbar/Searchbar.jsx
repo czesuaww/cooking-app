@@ -2,9 +2,10 @@ import './Searchbar.module.css';
 import style from './Searchbar.module.css';
 import useProperties from "../../hooks/useProperties";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useState } from 'react';
 
 const Searchbar = () => {
-    const [term, setTerm] = useLocalStorage('query', '');
+    const [term, setTerm] = useState('');
     const [, setLastSearch] = useLocalStorage('last-search', null);
 
     const { onSearch } = useProperties();
