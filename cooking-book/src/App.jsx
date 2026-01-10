@@ -59,7 +59,6 @@ const reducer = (state, action) => {
         };
       }
       const filteredPosts = state.poststsAll.filter(post => post.name.toLowerCase().includes(value));
-      console.log(filteredPosts, 'cipa');
       return {
         ...state,
         posts: filteredPosts
