@@ -3,7 +3,6 @@ import useProperties from "../../hooks/useProperties";
 
 const Posts = () => {
     const { posts } = useProperties();
-
     return (
         <>
             {posts.length > 0 ? (

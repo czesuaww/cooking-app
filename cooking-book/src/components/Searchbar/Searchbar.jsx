@@ -5,12 +5,17 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 
 const Searchbar = () => {
     const [term, setTerm] = useLocalStorage('query', '');
+    const [, setLastSearch] = useLocalStorage('last-search', null);
+
     const { onSearch } = useProperties();
     const search = (e) => setTerm(e.target.value);
 
-    const searchRecepie = () => onSearch(term);
+    const searchRecepie = () => {
+        onSearch(term);
+        if (term.trim()) setLastSearch(term);
+    }
 
-    const enterSearch = (e) => e.key === 'Enter' ? onSearch(term) : null;
+    const enterSearch = (e) => e.key === 'Enter' ? searchRecepie(term) : null;
 
     return (
         <>

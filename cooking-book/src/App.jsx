@@ -10,6 +10,7 @@ import BestPost from './components/BestPost/BestPost'
 import PropertiesContext from './components/context/PropertiesContext'
 import AuthContext from './components/context/AuthContext'
 import useLocalStorage from './hooks/useLocalStorage'
+import useWebsiteTitle from './hooks/useWebsiteTitle'
 
 const postsPL = [
   {
@@ -58,6 +59,7 @@ const reducer = (state, action) => {
         };
       }
       const filteredPosts = state.poststsAll.filter(post => post.name.toLowerCase().includes(value));
+      console.log(filteredPosts, 'cipa');
       return {
         ...state,
         posts: filteredPosts
@@ -78,6 +80,7 @@ const randomRecepie = randomRecepieFun();
 
 
 function App() {
+  useWebsiteTitle('Main page')
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
   const [theme, setTheme] = useLocalStorage('theme', {
     color: '#000',
@@ -103,7 +106,8 @@ function App() {
         <PropertiesContext.Provider value={{
           recipe: randomRecepie,
           onSearch: onSearch,
-          posts: state.posts
+          posts: state.posts,
+          allPosts: state.poststsAll
         }}>
           <AuthContext.Provider value={{
             isLogged: isLogged,
