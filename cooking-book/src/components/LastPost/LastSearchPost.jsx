@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router';
 
 const LastSearchPost = (props) => {
     const [desc, setDesc] = useState(false)
@@ -20,9 +21,10 @@ const LastSearchPost = (props) => {
                 :
                 <div>
                     <h1>You recently searched for this recipe: <br /> {props.lastRec.name} <br /> Do you want to see him again?</h1>
-                    <button onClick={handleYes}>
-                        Yes
-                    </button>
+                    <Link to={`/last-recepie/${props.lastRec.name}/${props.lastRec.id}`}>Tak</Link>
+                    {/* <button onClick={handleYes}> */}
+                    {/* Yes */}
+                    {/* </button> */}
                     <button onClick={props.onNo}>
                         No
                     </button>

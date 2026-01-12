@@ -1,18 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrush } from '@fortawesome/free-solid-svg-icons';
-import style from './ThemeButton.module.css';
-import AuthContainer from "../AuthContainer/AuthContainer";
+import style from './ActionContainer.module.css';
+import Login from "../Login/Login";
 import useTheme from "../../hooks/useTheme";
 
-const ThemeButton = () => {
+const ActionContainer = () => {
     const { textColor, themeColor } = useTheme();
 
     return (
         <>
             <FontAwesomeIcon className={style.icon} onClick={themeColor} icon={faBrush} style={{ color: textColor }} />
-            <AuthContainer />
+            <Login />
         </>
     )
 }
 
-export default ThemeButton;
+export default ActionContainer;

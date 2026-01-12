@@ -11,6 +11,7 @@ import useWebsiteTitle from './hooks/useWebsiteTitle'
 import { BrowserRouter, Routes, Route } from "react-router";
 import { initState, reducer, randomRecepie } from './reducer'
 import Home from './components/pages/Home'
+import BestPost from './components/BestPost/BestPost'
 
 function App() {
   useWebsiteTitle('Main page')
@@ -38,6 +39,8 @@ function App() {
       } />
       <Route path='/login' element={<h1>Log in</h1>} />
       <Route path='/register' element={<h1>Register</h1>} />
+      <Route path='/last-recepie/:name/:id' element={<BestPost />} />
+      {/* <Link to={`/last-recepie/${props.lastRec.name}/${props.lastRec.id}`}>Tak</Link> */}
     </Routes>
   )
 

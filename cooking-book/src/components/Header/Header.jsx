@@ -2,7 +2,6 @@ import img1 from '../../images/header/header1.jpg';
 import img2 from '../../images/header/header2.jpg';
 import img3 from '../../images/header/header3.jpg';
 import styles from './Header.module.css';
-
 import Arrow from '../Arrow/Arrow';
 
 const Header = () => {

@@ -9,7 +9,9 @@
     font-family: "Caveat", cursive;
     border-radius: 20px;
     border: none;
+    font-size: 1.5rem;
     padding: 10px 20px;
     background-color: var(--orange-color);
+    text-decoration: none;
     cursor: pointer;
 }
