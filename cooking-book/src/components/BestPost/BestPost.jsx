@@ -4,7 +4,7 @@ import useProperties from "../../hooks/useProperties";
 import LastSearchPost from "../LastPost/LastSearchPost";
 
 const BestPost = () => {
-    const user = useAuth();
+    const [user] = useAuth();
     const { recipe, allPosts } = useProperties();
     const [lastSearch, setLastSearch] = useLocalStorage('last-search', null);
 
