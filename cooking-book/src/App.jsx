@@ -11,6 +11,7 @@ import PropertiesContext from './components/context/PropertiesContext'
 import AuthContext from './components/context/AuthContext'
 import useLocalStorage from './hooks/useLocalStorage'
 import useWebsiteTitle from './hooks/useWebsiteTitle'
+import { BrowserRouter, Routes, Route } from "react-router";
 
 const postsPL = [
   {
@@ -95,47 +96,62 @@ function App() {
     }));
   };
 
+  const content = (
+    <Routes>
+      <Route index element={
+        <>
+          <BestPost />
+          <Searchbar />
+          {state.posts.length > 0
+            ?
+            <Posts />
+            :
+            <div className="empty-state">
+              <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
+              <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
+            </div>
+          }
+        </>
+      } />
+      <Route path='/login' element={<h1>Log in</h1>} />
+      <Route path='/register' element={<h1>Register</h1>} />
+    </Routes>
+  )
+
   return (
     <>
-      <ThemeContext.Provider value={{
-        color: theme.color,
-        background: theme.background,
-        changeColor: changeTheme
-      }}>
-        <PropertiesContext.Provider value={{
-          recipe: randomRecepie,
-          onSearch: onSearch,
-          posts: state.posts,
-          allPosts: state.poststsAll
+      <BrowserRouter>
+        <ThemeContext.Provider value={{
+          color: theme.color,
+          background: theme.background,
+          changeColor: changeTheme
         }}>
-          <AuthContext.Provider value={{
-            isLogged: isLogged,
-            logIn: () => setIsLogged(true),
-            logOut: () => setIsLogged(false)
+          <PropertiesContext.Provider value={{
+            recipe: randomRecepie,
+            onSearch: onSearch,
+            posts: state.posts,
+            allPosts: state.poststsAll
           }}>
-            <Layout
-              header={<Header />}
-              container={
-                <Container >
-                  <BestPost />
-                  <Searchbar />
-                  {state.posts.length > 0
-                    ?
-                    <Posts />
-                    :
-                    <div className="empty-state">
-                      <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
-                      <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
-                    </div>
-                  }
-                </Container>
-              }
-            >
-            </Layout>
-          </AuthContext.Provider>
+            <AuthContext.Provider value={{
+              isLogged: isLogged,
+              logIn: () => setIsLogged(true),
+              logOut: () => setIsLogged(false)
+            }}>
 
-        </PropertiesContext.Provider>
-      </ThemeContext.Provider>
+              <Layout
+                header={<Header />}
+                container={
+                  <Container >
+                    {content}
+                  </Container>
+                }
+              >
+              </Layout>
+            </AuthContext.Provider>
+
+          </PropertiesContext.Provider>
+        </ThemeContext.Provider>
+      </BrowserRouter>
     </>
   )
 }
