@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 const Post = (props) => {
     const [user] = useAuth();
     const { name, shortContent, longContent } = props;
-    console.log(user, 'Post')
+
     return (
         <>
             <div >
