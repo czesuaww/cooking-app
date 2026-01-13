@@ -1,18 +1,18 @@
-import './App.css'
-import Layout from './components/Layout/Layout'
-import Header from './components/Header/Header'
-import Container from './components/Container/Container'
-import ThemeContext from './components/context/ThemeContext'
-import { useReducer } from 'react'
-import PropertiesContext from './components/context/PropertiesContext'
-import AuthContext from './components/context/AuthContext'
-import useLocalStorage from './hooks/useLocalStorage'
-import useWebsiteTitle from './hooks/useWebsiteTitle'
+import './App.css';
+import Layout from './components/Layout/Layout';
+import Header from './components/Header/Header';
+import Container from './components/Container/Container';
+import ThemeContext from './components/context/ThemeContext';
+import { useReducer } from 'react';
+import PropertiesContext from './components/context/PropertiesContext';
+import AuthContext from './components/context/AuthContext';
+import useLocalStorage from './hooks/useLocalStorage';
+import useWebsiteTitle from './hooks/useWebsiteTitle';
 import { BrowserRouter, Routes, Route } from "react-router";
-import { initState, reducer, randomRecepie } from './reducer'
-import Home from './components/pages/Home'
-import BestPost from './components/BestPost/BestPost'
-import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview'
+import { initState, reducer, randomRecepie } from './reducer';
+import Home from './components/pages/Home';
+import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview';
+
 function App() {
   useWebsiteTitle('Main page')
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
@@ -41,7 +41,6 @@ function App() {
       <Route path='/login' element={<h1>Log in</h1>} />
       <Route path='/register' element={<h1>Register</h1>} />
       <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />
-      {/* <Link to={`/last-recepie/${props.lastRec.name}/${props.lastRec.id}`}>Tak</Link> */}
     </Routes>
   )
 
