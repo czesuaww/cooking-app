@@ -1,31 +1,32 @@
 import useAuth from "../../hooks/useAuth";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import useProperties from "../../hooks/useProperties";
-import LastSearchPost from "../LastPost/LastSearchPost";
+import LastSearchPostMain from "../LastSearchPostMain/LastSearchPostMain";
 
 const BestPost = () => {
     const [user] = useAuth();
-    const { recipe, allPosts } = useProperties();
+    const { randomRecipe, allPosts } = useProperties();
     const [lastSearch, setLastSearch] = useLocalStorage('last-search', null);
 
     const handleNo = () => setLastSearch(null);
 
-    const lastFoundRecipe = lastSearch ? allPosts.filter(post => post.name.toLowerCase().includes(lastSearch.toLowerCase()))[0] : null;
+    const lastFoundRandomRecipe = lastSearch ? allPosts.filter(post => post.name.toLowerCase().includes(lastSearch.toLowerCase()))[0] : null;
 
     return (
         <div>
 
             {lastSearch
                 ?
-                <LastSearchPost
-                    lastRec={lastFoundRecipe}
+                <LastSearchPostMain
+                    lastRec={lastFoundRandomRecipe}
                     onNo={handleNo}
                 />
                 : null
             }
-            <h2>{recipe.name}</h2>
-            <p>{recipe.shortContent}</p>
-            <p>{recipe.longContent}</p>
+            <br />
+            <h2>{randomRecipe.name}</h2>
+            <p>{randomRecipe.shortContent}</p>
+            <p>{randomRecipe.longContent}</p>
             <p>Kod rabatowy na mikser: </p>
             {user
                 ?

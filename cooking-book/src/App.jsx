@@ -12,10 +12,11 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import { initState, reducer, randomRecepie } from './reducer'
 import Home from './components/pages/Home'
 import BestPost from './components/BestPost/BestPost'
-
+import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview'
 function App() {
   useWebsiteTitle('Main page')
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
+  console.log(isLogged, 'isLogged')
   const [theme, setTheme] = useLocalStorage('theme', {
     color: '#000',
     background: '#fff'
@@ -39,7 +40,7 @@ function App() {
       } />
       <Route path='/login' element={<h1>Log in</h1>} />
       <Route path='/register' element={<h1>Register</h1>} />
-      <Route path='/last-recepie/:name/:id' element={<BestPost />} />
+      <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />
       {/* <Link to={`/last-recepie/${props.lastRec.name}/${props.lastRec.id}`}>Tak</Link> */}
     </Routes>
   )
@@ -53,7 +54,7 @@ function App() {
           changeColor: changeTheme
         }}>
           <PropertiesContext.Provider value={{
-            recipe: randomRecepie,
+            randomRecipe: randomRecepie,
             onSearch: onSearch,
             posts: state.posts,
             allPosts: state.poststsAll

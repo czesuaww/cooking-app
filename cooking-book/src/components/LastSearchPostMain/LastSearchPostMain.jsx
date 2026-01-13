@@ -21,10 +21,7 @@ const LastSearchPost = (props) => {
                 :
                 <div>
                     <h1>You recently searched for this recipe: <br /> {props.lastRec.name} <br /> Do you want to see him again?</h1>
-                    <Link to={`/last-recepie/${props.lastRec.name}/${props.lastRec.id}`}>Tak</Link>
-                    {/* <button onClick={handleYes}> */}
-                    {/* Yes */}
-                    {/* </button> */}
+                    <Link to={`/last-recepie/${props.lastRec.id}`}>Tak</Link>
                     <button onClick={props.onNo}>
                         No
                     </button>

@@ -1,6 +1,4 @@
 import style from './Container.module.css';
-
-
 import ActionContainer from '../ActionContainer/ActionContainer';
 import useTheme from '../../hooks/useTheme';
 
