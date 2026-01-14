@@ -10,10 +10,12 @@ import useLocalStorage from './hooks/useLocalStorage';
 import useWebsiteTitle from './hooks/useWebsiteTitle';
 import { BrowserRouter, Routes, Route } from "react-router";
 import { initState, randomRecepie } from './reducer';
-import Home from './components/pages/Home';
+import Home from './components/pages/Home/Home';
 import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview';
 import Search from './components/pages/Search';
 import Searchbar from './components/Searchbar/Searchbar';
+import Profile from './components/pages/Profile/Profile';
+import NotFound from './components/pages/NotFound';
 
 function App() {
   useWebsiteTitle('Main page')
@@ -49,7 +51,11 @@ function App() {
           <Search />
         </>
       } />
-      {/* <Route path='/my-profile' element={<Proffle />} /> */}
+      <Route path='/my-profile' element={<Profile />} >
+        <Route index element='edit'></Route>
+        <Route path='recepies' element='recepies'></Route>
+      </Route>
+      <Route path='*' element={<NotFound />}></Route>
     </Routes>
   )
 

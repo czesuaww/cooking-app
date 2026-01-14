@@ -17,11 +17,10 @@ const ActionContainer = () => {
                         <NavLink to='/' className={style.home}>Home</NavLink>
                     </li>
                     <li className={style.menuItem}>
-                        <NavLink to='profile' className={style.profile}>My Profile</NavLink>
+                        <NavLink to='my-profile' className={style.profile}>My Profile</NavLink>
                     </li>
                     <li className={style.menuItem}>
                         <NavLink to='login' className={style.login}>Login</NavLink>
-                        {/* <Login /> */}
                     </li>
                 </ul>
             </nav>

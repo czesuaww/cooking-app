@@ -19,7 +19,6 @@ const Search = () => {
                 setPosts(filteredPosts);
                 setLoading(false);
             }
-
         }, 1500);
     }, [query])
 
