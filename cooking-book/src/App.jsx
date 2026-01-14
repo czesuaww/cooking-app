@@ -52,10 +52,10 @@ function App() {
         </>
       } />
       <Route path='/my-profile' element={<Profile />} >
-        <Route index element='edit'></Route>
-        <Route path='recepies' element='recepies'></Route>
+        <Route index element='edit' />
+        <Route path='recepies' element='recepies' />
       </Route>
-      <Route path='*' element={<NotFound />}></Route>
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 
