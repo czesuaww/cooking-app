@@ -37,7 +37,7 @@ function App() {
     <Routes>
       <Route index element={
         <>
-          <Home state={state} theme={theme} />
+          <Home theme={theme} />
         </>
       } />
       <Route path='/login' element={<h1>Log in</h1>} />

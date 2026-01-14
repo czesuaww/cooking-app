@@ -1,5 +1,5 @@
 import style from './Container.module.css';
-import ActionContainer from '../ActionContainer/ActionContainer';
+import Menu from '../Menu/Menu';
 import useTheme from '../../hooks/useTheme';
 
 const Container = (props) => {
@@ -7,7 +7,7 @@ const Container = (props) => {
 
     return (
         <div id='container' className={style.container} style={{ color: textColor, background: bgColor }}>
-            <ActionContainer />
+            <Menu />
             {props.children}
         </div>
     )
