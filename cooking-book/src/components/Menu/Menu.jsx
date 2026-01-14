@@ -3,7 +3,7 @@ import { faBrush } from '@fortawesome/free-solid-svg-icons';
 import style from './Menu.module.css';
 import Login from "../Login/Login";
 import useTheme from "../../hooks/useTheme";
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const ActionContainer = () => {
     const { textColor, themeColor } = useTheme();
@@ -13,11 +13,15 @@ const ActionContainer = () => {
             <FontAwesomeIcon className={style.icon} onClick={themeColor} icon={faBrush} style={{ color: textColor }} />
             <nav>
                 <ul>
-                    <li>
-                        <Link to='/' className={style.home}>Home</Link>
+                    <li className={style.menuItem}>
+                        <NavLink to='/' className={style.home}>Home</NavLink>
                     </li>
-                    <li>
-                        <Login />
+                    <li className={style.menuItem}>
+                        <NavLink to='profile' className={style.profile}>My Profile</NavLink>
+                    </li>
+                    <li className={style.menuItem}>
+                        <NavLink to='login' className={style.login}>Login</NavLink>
+                        {/* <Login /> */}
                     </li>
                 </ul>
             </nav>

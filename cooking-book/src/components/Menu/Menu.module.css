@@ -14,10 +14,13 @@ li {
     list-style: none;
 }
 
-.home {
+
+
+.home,
+.login,
+.profile {
     position: absolute;
     top: .6rem;
-    right: 10rem;
     font-family: "Caveat", cursive;
     border-radius: 20px;
     border: none;
@@ -27,4 +30,25 @@ li {
     text-decoration: none;
     cursor: pointer;
 
+}
+
+.home {
+    right: 19.5rem;
+}
+
+.profile {
+    right: 9.5rem;
+}
+
+.login {
+    right: 2rem;
+}
+
+.menuItem a {
+    color: var(--black-color);
+}
+
+.menuItem a:global.active {
+    font-weight: bold;
+    background-color: var(--active-color);
 }

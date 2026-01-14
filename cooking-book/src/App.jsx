@@ -49,6 +49,7 @@ function App() {
           <Search />
         </>
       } />
+      {/* <Route path='/my-profile' element={<Proffle />} /> */}
     </Routes>
   )
 
