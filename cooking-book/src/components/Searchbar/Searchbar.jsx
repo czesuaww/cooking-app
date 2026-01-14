@@ -1,18 +1,17 @@
 import './Searchbar.module.css';
 import style from './Searchbar.module.css';
-import useProperties from "../../hooks/useProperties";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const Searchbar = () => {
-    const [term, setTerm] = useState('');
+    const [term, setTerm] = useLocalStorage('query', '');
     const [, setLastSearch] = useLocalStorage('last-search', null);
-
-    const { onSearch } = useProperties();
+    const navigate = useNavigate();
     const search = (e) => setTerm(e.target.value);
 
     const searchRecepie = () => {
-        onSearch(term);
+        navigate({ pathname: '/search', search: `?fraze=${term}` })
+
         if (term.trim()) setLastSearch(term);
     }
 

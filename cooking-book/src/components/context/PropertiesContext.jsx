@@ -2,8 +2,7 @@ import { createContext } from "react";
 
 const PropertiesContext = createContext({
     recipe: null,
-    onSearch: () => { },
-    posts: null
+    allPosts: null
 })
 
 export default PropertiesContext;

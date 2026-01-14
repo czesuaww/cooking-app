@@ -18,9 +18,11 @@ const LastSearchPostPreview = () => {
 
     return (
         <>
-            <h1>{post.name}</h1>
+            <h1>Here's the recipe you searched for recently. Enjoy! ;p</h1>
+            <h2>{post.name}</h2>
             <p>{post.shortContent}</p>
             <p>{post.longContent}</p>
+
         </>
     )
 }

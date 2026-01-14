@@ -3,15 +3,17 @@ import Layout from './components/Layout/Layout';
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import ThemeContext from './components/context/ThemeContext';
-import { useReducer } from 'react';
+import { useState } from 'react';
 import PropertiesContext from './components/context/PropertiesContext';
 import AuthContext from './components/context/AuthContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import useWebsiteTitle from './hooks/useWebsiteTitle';
 import { BrowserRouter, Routes, Route } from "react-router";
-import { initState, reducer, randomRecepie } from './reducer';
+import { initState, randomRecepie } from './reducer';
 import Home from './components/pages/Home';
 import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview';
+import Search from './components/pages/Search';
+import Searchbar from './components/Searchbar/Searchbar';
 
 function App() {
   useWebsiteTitle('Main page')
@@ -21,8 +23,8 @@ function App() {
     color: '#000',
     background: '#fff'
   });
-  const [state, dispatch] = useReducer(reducer, initState)
-  const onSearch = value => dispatch({ type: 'search-posts', payload: value })
+
+  const [state] = useState(initState)
 
   const changeTheme = () => {
     setTheme(prev => ({
@@ -41,6 +43,12 @@ function App() {
       <Route path='/login' element={<h1>Log in</h1>} />
       <Route path='/register' element={<h1>Register</h1>} />
       <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />
+      <Route path='/search' element={
+        <>
+          <Searchbar />
+          <Search />
+        </>
+      } />
     </Routes>
   )
 
@@ -54,8 +62,6 @@ function App() {
         }}>
           <PropertiesContext.Provider value={{
             randomRecipe: randomRecepie,
-            onSearch: onSearch,
-            posts: state.posts,
             allPosts: state.poststsAll
           }}>
             <AuthContext.Provider value={{

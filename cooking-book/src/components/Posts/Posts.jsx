@@ -2,12 +2,12 @@ import Post from "../Post/Post";
 import useProperties from "../../hooks/useProperties";
 
 const Posts = () => {
-    const { posts } = useProperties();
+    const { allPosts } = useProperties();
     return (
         <>
-            {posts.length > 0 ? (
+            {allPosts.length > 0 ? (
                 <div className="posts-list">
-                    {posts.map(post => (
+                    {allPosts.map(post => (
                         <Post key={post.id} {...post} />
                     ))}
                 </div>

@@ -15,13 +15,16 @@ const BestPost = () => {
     return (
         <div>
 
-            {lastSearch
+            {lastSearch && lastFoundRandomRecipe
                 ?
-                <LastSearchPostMain
-                    lastRec={lastFoundRandomRecipe}
-                    onNo={handleNo}
-                />
-                : null
+                (
+                    <LastSearchPostMain
+                        lastRec={lastFoundRandomRecipe}
+                        onNo={handleNo}
+                    />
+                )
+                :
+                null
             }
             <br />
             <h2>{randomRecipe.name}</h2>

@@ -7,7 +7,7 @@ import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
 import { faBurger } from '@fortawesome/free-solid-svg-icons';
 import style from '../pages/Home.module.css';
 
-const Home = ({ theme, state }) => {
+const Home = ({ theme }) => {
     return (
         <>
             <h1 className={style.header}>We have more than enough of what you looking for</h1>
@@ -27,17 +27,11 @@ const Home = ({ theme, state }) => {
             </div>
             <BestPost />
             <Searchbar />
-            {state.posts.length > 0
-                ?
-                <Posts />
-                :
-                <div className="empty-state">
-                    <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
-                    <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
-                </div>
-            }
+            <div className="empty-state">
+                <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
+                <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
+            </div>
         </>
-
     )
 }
 
