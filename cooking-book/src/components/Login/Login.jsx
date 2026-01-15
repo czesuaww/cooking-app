@@ -1,9 +1,8 @@
 import style from './Login.module.css';
-import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router';
 
 const Login = () => {
-    const [user, setUser] = useAuth();
+    // const [user, setUser] = useAuth();
 
     // const logIn = () => setUser(true);
     // const logOut = () => setUser(false);

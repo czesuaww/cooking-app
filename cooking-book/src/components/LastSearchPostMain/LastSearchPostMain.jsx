@@ -1,8 +1,6 @@
 import { Link } from 'react-router';
 
 const LastSearchPostMain = (props) => {
-    // const [desc, setDesc] = useState(false)
-    // const handleYes = () => setDesc(true);
     return (
         <div>
             <h1>You recently searched for this recipe: <br /> {props.lastRec.name} <br /> Do you want to see him again?</h1>

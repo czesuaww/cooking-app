@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { postsPL } from "../../reducer";
-import Post from "../Post/Post";
-import useWebsiteTitle from "../../hooks/useWebsiteTitle";
+import { postsPL } from "../../../reducer";
+import Post from "../../Post/Post";
+import useWebsiteTitle from "../../../hooks/useWebsiteTitle";
 import { useSearchParams } from "react-router";
+import style from '../Search/Search.module.css';
 
 const Search = () => {
     useWebsiteTitle('Searched result')
@@ -22,10 +23,10 @@ const Search = () => {
         }, 1500);
     }, [query])
 
-    if (loading) return <h1>Loading...</h1>
+    if (loading) return <h1 className={style.container}>Loading...</h1>
 
     return (
-        <div>
+        <div className={style.container}>
             <h1>Search result: {query}</h1>
             {posts.length > 0
                 ?
@@ -37,7 +38,7 @@ const Search = () => {
                         }
                     </>
                 ) :
-                <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
+                <div className={style.errorRecepie}>
                     <h1>No recipes found</h1>
                     <p>Try entering a different dish name</p>
                 </div>

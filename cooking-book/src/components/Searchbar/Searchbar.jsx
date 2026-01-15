@@ -26,7 +26,7 @@ const Searchbar = () => {
     const enterSearch = e => e.key === 'Enter' ? searchRecepie() : null;
 
     return (
-        <>
+        <div className={style.container}>
             <input
                 name="searching"
                 type="text"
@@ -37,7 +37,7 @@ const Searchbar = () => {
             />
             {error && <h1 className={style.error}>Input cannot be empty</h1>}
             <button className={style.searchBtn} onClick={searchRecepie}>Search</button>
-        </>
+        </div>
     )
 }
 

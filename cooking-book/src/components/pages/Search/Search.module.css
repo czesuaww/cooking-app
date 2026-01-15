@@ -1,0 +1,9 @@
+.container {
+    text-align: center;
+}
+
+
+.errorRecepie {
+    padding: '40px';
+    color: var(--black-color);
+}
