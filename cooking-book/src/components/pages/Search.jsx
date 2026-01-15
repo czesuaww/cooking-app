@@ -38,8 +38,8 @@ const Search = () => {
                     </>
                 ) :
                 <div style={{ textAlign: 'center', padding: '40px', color: '#666' }}>
-                    <h1>Nie znaleziono przepisów</h1>
-                    <p>Spróbuj wpisać inną nazwę dania</p>
+                    <h1>No recipes found</h1>
+                    <p>Try entering a different dish name</p>
                 </div>
             }
 

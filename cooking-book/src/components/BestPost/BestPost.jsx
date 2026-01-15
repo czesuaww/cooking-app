@@ -30,7 +30,7 @@ const BestPost = () => {
             <h2>{randomRecipe.name}</h2>
             <p>{randomRecipe.shortContent}</p>
             <p>{randomRecipe.longContent}</p>
-            <p>Kod rabatowy na mikser: </p>
+            <p>Mixer discount code:</p>
             {user
                 ?
                 <p>#KBCC123</p>

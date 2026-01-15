@@ -1,6 +1,5 @@
 import BestPost from "../../BestPost/BestPost";
 import Searchbar from "../../Searchbar/Searchbar";
-import Posts from "../../Posts/Posts";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons';

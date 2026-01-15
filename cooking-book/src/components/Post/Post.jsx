@@ -12,7 +12,7 @@ const Post = (props) => {
                     <div>
                         <p>{shortContent}</p>
                         <p>{longContent}</p>
-                        <p>Kod rabatowy na mikser: </p>
+                        <p>Mixer discount code:</p>
                         {user
                             ?
                             <p>#KBCC123</p>

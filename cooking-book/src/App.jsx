@@ -37,11 +37,7 @@ function App() {
 
   const content = (
     <Routes>
-      <Route index element={
-        <>
-          <Home theme={theme} />
-        </>
-      } />
+      <Route index element={<Home theme={theme} />} />
       <Route path='/login' element={<h1>Log in</h1>} />
       <Route path='/register' element={<h1>Register</h1>} />
       <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />

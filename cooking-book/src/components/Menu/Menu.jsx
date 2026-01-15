@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrush } from '@fortawesome/free-solid-svg-icons';
 import style from './Menu.module.css';
-import Login from "../Login/Login";
 import useTheme from "../../hooks/useTheme";
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 
 const ActionContainer = () => {
     const { textColor, themeColor } = useTheme();

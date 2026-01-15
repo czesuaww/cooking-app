@@ -9,7 +9,8 @@ const Searchbar = () => {
     const [, setLastSearch] = useLocalStorage('last-search', null);
     const navigate = useNavigate();
     const [error, setError] = useState(false);
-    const search = (e) => setTerm(e.target.value);
+
+    const search = e => setTerm(e.target.value);
 
     const searchRecepie = () => {
         if (term.trim() === '') {
@@ -22,7 +23,7 @@ const Searchbar = () => {
         if (term.trim()) setLastSearch(term);
     }
 
-    const enterSearch = (e) => e.key === 'Enter' ? searchRecepie() : null;
+    const enterSearch = e => e.key === 'Enter' ? searchRecepie() : null;
 
     return (
         <>

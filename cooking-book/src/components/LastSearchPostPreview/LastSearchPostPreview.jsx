@@ -8,7 +8,6 @@ const LastSearchPostPreview = () => {
 
     useEffect(() => {
         const foundPost = initState.poststsAll.find(x => x.id === Number(id));
-        console.log(foundPost)
         setTimeout(() => {
             setPost(foundPost);
         }, 1000)
