@@ -17,8 +17,8 @@ Planned Backend (future development):
   
 Getting Started:
 To run the project locally:
-npm install
-npm run dev
+- npm install
+- npm run dev
 
 Project Status:
 This project is under active development.
