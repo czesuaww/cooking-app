@@ -10,10 +10,11 @@ Frontend:
 -	JavaScript
 -	HTML
 -	CSS
+
 Planned Backend (future development):
 -	PHP
 -	Database integration (e.g. MySQL)
--	
+  
 Getting Started:
 To run the project locally:
 npm install
