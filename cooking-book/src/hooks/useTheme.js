@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import ThemeContext from '../components/context/ThemeContext';
 
 const useTheme = () => {
-    const { color, background, changeColor } = useContext(ThemeContext);
+    const { color, background, changeColor, border } = useContext(ThemeContext);
 
-    const textColor = color;
-    const bgColor = background;
-    const themeColor = changeColor;
-
-    return { textColor, bgColor, themeColor };
+    return {
+        textColor: color,
+        bgColor: background,
+        themeColor: changeColor,
+        formBorder: border
+    };
 };
 
 export default useTheme;

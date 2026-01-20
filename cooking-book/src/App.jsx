@@ -16,6 +16,7 @@ import Search from './components/pages/Search/Search';
 import Searchbar from './components/Searchbar/Searchbar';
 import NotFound from './components/pages/NotFound';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
+import Login from './components/pages/Auth/Login/Login';
 
 // import Profile from './components/pages/Profile/Profile';
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
@@ -27,23 +28,29 @@ function App() {
   console.log(isLogged, 'isLogged')
   const [theme, setTheme] = useLocalStorage('theme', {
     color: '#000',
-    background: '#fff'
+    background: '#fff',
+    border: '#000'
   });
 
   const [state] = useState(initState)
 
   const changeTheme = () => {
-    setTheme(prev => ({
-      color: prev.color === '#000' ? '#fff' : '#000',
-      background: prev.background === '#fff' ? '#000' : '#fff'
-    }));
+    setTheme(prev => {
+      const newBg = prev.background === '#fff' ? '#000' : '#fff';
+
+      return {
+        background: newBg,
+        color: newBg === '#fff' ? '#000' : '#fff',
+        border: newBg === '#fff' ? '#000' : '#fff'
+      };
+    });
   };
 
   const content = (
     <Suspense fallback={'Loading...'}>
       <Routes>
         <Route index element={<Home theme={theme} />} />
-        <Route path='/login' element={<h1>Log in</h1>} />
+        <Route path='/login' element={<h1>{<Login />}</h1>} />
         <Route path='/register' element={<h1>Register</h1>} />
         <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />
         <Route path='/search' element={
@@ -69,7 +76,8 @@ function App() {
         <ThemeContext.Provider value={{
           color: theme.color,
           background: theme.background,
-          changeColor: changeTheme
+          changeColor: changeTheme,
+          border: theme.border
         }}>
           <PropertiesContext.Provider value={{
             randomRecipe: randomRecepie,

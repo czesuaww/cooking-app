@@ -28,6 +28,7 @@ const Searchbar = () => {
     return (
         <div className={style.container}>
             <input
+                className={style.search}
                 name="searching"
                 type="text"
                 placeholder="Search recepie e.g. Chicken masala..."

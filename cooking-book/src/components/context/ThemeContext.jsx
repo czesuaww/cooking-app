@@ -3,7 +3,8 @@ import { createContext } from "react";
 const ThemeContext = createContext({
     color: '',
     background: '',
-    changeColor: () => { }
+    changeColor: () => { },
+    border: ''
 })
 
 export default ThemeContext;
