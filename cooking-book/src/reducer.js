@@ -37,7 +37,13 @@ export const postsPL = [
 ]
 
 export const initState = {
-    poststsAll: postsPL
+    poststsAll: postsPL,
+    success: null,
+    error: {},
+    values: {
+        email: '',
+        password: ''
+    }
 }
 
 export const randomRecepieFun = () => {

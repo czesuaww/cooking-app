@@ -4,12 +4,11 @@ import style from './Menu.module.css';
 import useTheme from "../../hooks/useTheme";
 import { NavLink } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
 
 const ActionContainer = () => {
     const { textColor, themeColor } = useTheme();
     const [user, setUser] = useAuth(false);
-
-    const logIn = () => setUser(true);
     const logOut = () => setUser(false);
 
     return (
@@ -23,7 +22,7 @@ const ActionContainer = () => {
                     {!user
                         ?
                         <li className={style.menuItem}>
-                            <NavLink to='login' className={style.btn} onClick={logIn}>Login</NavLink>
+                            <NavLink to='login' className={style.btn}>Login</NavLink>
                         </li>
                         :
                         <>

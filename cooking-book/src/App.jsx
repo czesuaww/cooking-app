@@ -17,6 +17,7 @@ import Searchbar from './components/Searchbar/Searchbar';
 import NotFound from './components/pages/NotFound';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import Login from './components/pages/Auth/Login/Login';
+import EditProfile from './components/pages/EditProfile/EditProfile';
 
 // import Profile from './components/pages/Profile/Profile';
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
@@ -41,7 +42,7 @@ function App() {
       return {
         background: newBg,
         color: newBg === '#fff' ? '#000' : '#fff',
-        border: newBg === '#fff' ? '#000' : '#fff'
+        border: newBg === '#fff' ? 'unset' : '#fff'
       };
     });
   };
@@ -58,10 +59,11 @@ function App() {
             <Searchbar />
             <Search />
           </>
-        } />
+        }
+        />
         <Route element={<AuthenticatedRoute />}>
           <Route path='/my-profile' element={<Profile />} >
-            <Route index element='edit' />
+            <Route index element={<EditProfile />} />
             <Route path='recepies' element='recepies' />
           </Route>
         </Route>
