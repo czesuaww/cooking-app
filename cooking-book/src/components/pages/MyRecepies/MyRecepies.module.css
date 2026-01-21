@@ -1,0 +1,13 @@
+.title {
+    margin-bottom: 2rem;
+}
+
+.addBtn {
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: bold;
+    background-color: var(--button-color);
+    border-radius: 6px;
+    padding: 1rem 3rem;
+}

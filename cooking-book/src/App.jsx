@@ -18,6 +18,8 @@ import NotFound from './components/pages/NotFound';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import Login from './components/pages/Auth/Login/Login';
 import EditProfile from './components/pages/EditProfile/EditProfile';
+import MyRecepies from './components/pages/MyRecepies/MyRecepies';
+import AddRecepie from './components/pages/MyRecepies/AddRecepie';
 
 // import Profile from './components/pages/Profile/Profile';
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
@@ -64,7 +66,8 @@ function App() {
         <Route element={<AuthenticatedRoute />}>
           <Route path='/my-profile' element={<Profile />} >
             <Route index element={<EditProfile />} />
-            <Route path='recepies' element='recepies' />
+            <Route path='recepies' element={<MyRecepies />} />
+            <Route path='add-recepie' element={<AddRecepie />} />
           </Route>
         </Route>
         <Route path='*' element={<NotFound />} />
