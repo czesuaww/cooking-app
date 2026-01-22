@@ -1,0 +1,16 @@
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.btn {
+    font-size: 2rem;
+    color: var(--black-color);
+    font-weight: bold;
+    background-color: var(--button-color);
+    border-radius: 6px;
+    padding: 1rem 3rem;
+    border: 1px solid var(--black-color);
+    cursor: pointer;
+}

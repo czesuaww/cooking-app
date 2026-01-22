@@ -9,7 +9,6 @@ import AuthContext from './components/context/AuthContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import useWebsiteTitle from './hooks/useWebsiteTitle';
 import { BrowserRouter, Routes, Route } from "react-router";
-import { initState, randomRecepie } from './reducer';
 import Home from './components/pages/Home/Home';
 import LastSearchPostPreview from './components/LastSearchPostPreview/LastSearchPostPreview';
 import Search from './components/pages/Search/Search';
@@ -20,8 +19,9 @@ import Login from './components/pages/Auth/Login/Login';
 import EditProfile from './components/pages/EditProfile/EditProfile';
 import MyRecepies from './components/pages/MyRecepies/MyRecepies';
 import AddRecepie from './components/pages/MyRecepies/AddRecepie';
+import Register from './components/pages/Auth/Register/Register';
+import { initState, randomRecepie } from './store';
 
-// import Profile from './components/pages/Profile/Profile';
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
 
 
@@ -54,7 +54,7 @@ function App() {
       <Routes>
         <Route index element={<Home theme={theme} />} />
         <Route path='/login' element={<h1>{<Login />}</h1>} />
-        <Route path='/register' element={<h1>Register</h1>} />
+        <Route path='/register' element={<Register />} />
         <Route path='/last-recepie/:id' element={<LastSearchPostPreview />} />
         <Route path='/search' element={
           <>

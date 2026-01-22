@@ -4,7 +4,8 @@ import style from '../Login/Login.module.css';
 import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 import { loginAction } from '../../../../actions/loginAction';
-import { initState } from '../../../../reducer';
+import { initState } from '../../../../store';
+import Input from '../../../UI/Input';
 
 const Login = () => {
     const { textColor, bgColor, formBorder } = useTheme();
@@ -34,8 +35,8 @@ const Login = () => {
                 <h2 className={style.title}>Login</h2>
 
                 <div className={style.inputGroup}>
-                    <label htmlFor="email">Email</label>
-                    <input
+                    <Input
+                        label='Email'
                         type="email"
                         id="email"
                         placeholder="Enter your email"
@@ -49,8 +50,8 @@ const Login = () => {
                 </div>
 
                 <div className={style.inputGroup}>
-                    <label htmlFor="password">Password</label>
-                    <input
+                    <Input
+                        label='Password'
                         type="password"
                         id="password"
                         placeholder="Enter your password"

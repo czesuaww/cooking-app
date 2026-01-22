@@ -4,7 +4,6 @@ import style from './Menu.module.css';
 import useTheme from "../../hooks/useTheme";
 import { NavLink } from 'react-router';
 import useAuth from '../../hooks/useAuth';
-import { useState } from 'react';
 
 const ActionContainer = () => {
     const { textColor, themeColor } = useTheme();
@@ -21,9 +20,14 @@ const ActionContainer = () => {
                     </li>
                     {!user
                         ?
-                        <li className={style.menuItem}>
-                            <NavLink to='login' className={style.btn}>Login</NavLink>
-                        </li>
+                        <>
+                            <li className={style.menuItem}>
+                                <NavLink to='login' className={style.btn}>Login</NavLink>
+                            </li>
+                            <li className={style.menuItem}>
+                                <NavLink to='register' className={style.btn}>Register</NavLink>
+                            </li>
+                        </>
                         :
                         <>
                             <li className={style.menuItem}>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { postsPL } from "../../../reducer";
+
 import Post from "../../Post/Post";
 import useWebsiteTitle from "../../../hooks/useWebsiteTitle";
 import { useSearchParams } from "react-router";
 import style from '../Search/Search.module.css';
+import { postsPL } from "../../../store";
 
 const Search = () => {
     useWebsiteTitle('Searched result')

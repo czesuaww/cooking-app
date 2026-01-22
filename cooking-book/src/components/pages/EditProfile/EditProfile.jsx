@@ -1,8 +1,8 @@
 import { editProfileAction } from '../../../actions/editProfileAction';
 import useTheme from '../../../hooks/useTheme';
+import { initState } from '../../../store';
 import style from '../EditProfile/EditProfile.module.css';
 import { useActionState } from 'react';
-import { initState } from '../../../reducer';
 
 
 const EditProfile = () => {

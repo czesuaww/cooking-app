@@ -23,3 +23,8 @@
     resize: none;
     border-radius: 6px;
 }
+
+.error {
+    color: var(--error-color);
+    font-size: 1.8rem;
+}

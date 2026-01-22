@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { initState } from "../../reducer";
 import style from '../LastSearchPostPreview/LastSearchPostPreview.module.css';
+import { initState } from "../../store";
 
 const LastSearchPostPreview = () => {
     const { id } = useParams();
