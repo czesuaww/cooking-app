@@ -10,8 +10,8 @@ const RecepieForm = () => {
             <Input desc='status' label='Status' type='select'
                 options={
                     [
-                        { value: 1, label: 'Aktywny' },
-                        { value: 2, label: 'Ukryty' }
+                        { value: 1, label: 'Active' },
+                        { value: 2, label: 'Hidden' }
                     ]
                 }
             />
