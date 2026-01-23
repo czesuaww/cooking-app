@@ -23,12 +23,12 @@
 }
 
 .inputGroup label {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
 }
 
 .inputGroup input {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.7rem;
     border: 1px solid var(--black-color);
     border-radius: 6px;
     font-size: 1rem;
@@ -40,7 +40,7 @@
     text-align: center;
     color: var(--error-color);
     padding-top: .5rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
 }
 
 .loginBtn {
@@ -64,5 +64,5 @@
 .error {
     text-align: center;
     color: var(--error-color);
-    font-size: 2.7rem;
+    font-size: 2rem;
 }

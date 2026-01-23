@@ -7,7 +7,6 @@ import { recepieFormAction } from '../../../actions/recepieFormAction';
 const RecepieForm = () => {
     const [state, formData, isPedngin] = useActionState(recepieFormAction, initState);
 
-    console.log(state)
     return (
         <div className={style.container}>
             <form action={formData}>

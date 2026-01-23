@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import ThemeContext from './components/context/ThemeContext';
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import PropertiesContext from './components/context/PropertiesContext';
 import AuthContext from './components/context/AuthContext';
 import useLocalStorage from './hooks/useLocalStorage';
@@ -28,7 +28,6 @@ const Profile = lazy(() => import('./components/pages/Profile/Profile'));
 function App() {
   useWebsiteTitle('Main page')
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
-  console.log(isLogged, 'isLogged')
   const [theme, setTheme] = useLocalStorage('theme', {
     color: '#000',
     background: '#fff',

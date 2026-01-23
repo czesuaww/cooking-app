@@ -6,7 +6,6 @@ const useAuth = () => {
 
     useDebugValue(isLogged, (user) => user ? 'Logged it' : 'Logged out');
     const setUser = (value, userData = null) => {
-        console.log(userData, 'useAuth')
         if (value) {
             logIn();
             if (userData) window.localStorage.setItem('user', JSON.stringify(userData));

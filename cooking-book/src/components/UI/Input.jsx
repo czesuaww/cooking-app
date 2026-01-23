@@ -1,22 +1,21 @@
 import style from '../UI/Input.module.css';
 
-
 const Input = (props) => {
     switch (props.desc) {
-        case 'title': return <InputTextUnControlled {...props} />
+        case 'title': return <InputText {...props} />
         case 'status': return <InputSelect {...props} />
-        case 'password': return <InputTextControlled {...props} type='password' />
-        case 'email': return <InputTextControlled {...props} type='email' />
+        case 'password': return <InputText {...props} type='password' />
+        case 'email': return <InputText {...props} type='email' />
         case 'description': return <InputTextAreaDesc {...props} />
         case 'ingredients': return <InputTextAreaIngredients {...props} />
         case 'picture': return <InputFile {...props} />
-        default: return <InputTextUnControlled {...props} />
+        default: return <InputText {...props} />
     }
 
 }
 
 
-const InputTextUnControlled = (props) => {
+const InputText = (props) => {
     return (
         <div className={style.container}>
             <label>{props.label}</label>
@@ -30,21 +29,6 @@ const InputTextUnControlled = (props) => {
     )
 }
 
-const InputTextControlled = (props) => {
-    console.log(props, 'controlled')
-    return (
-        <div className={style.container}>
-            <label>{props.label}</label>
-            <input
-                name={props.name}
-                type={props.type ?? 'text'}
-                value={props.value}
-                onChange={(e) => props.onChange(e)}
-            />
-            <h2 className={style.error}>{props.error}</h2>
-        </div>
-    )
-}
 
 const InputSelect = (props) => {
     return (
