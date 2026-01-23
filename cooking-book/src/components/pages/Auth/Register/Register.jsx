@@ -39,7 +39,6 @@ const Register = () => {
         }
     }
 
-
     return (
         <div className={style.container} >
             <form

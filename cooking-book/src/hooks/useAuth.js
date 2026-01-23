@@ -15,7 +15,10 @@ const useAuth = () => {
             window.localStorage.removeItem('user');
         }
     }
-    return [isLogged, setUser]
+
+    const userData = JSON.parse(window.localStorage.getItem('user'));
+
+    return [isLogged ? userData : false, setUser]
 }
 
 export default useAuth;

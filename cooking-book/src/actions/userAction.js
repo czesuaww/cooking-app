@@ -1,7 +1,7 @@
-export async function userAction(prevState, formData) {
+export async function userAction(email, password) {
     await new Promise(res => setTimeout(res, 1000));
-    const email = formData.get('email');
-    const password = formData.get('password');
+    // const email = formData.get('email');
+    // const password = formData.get('password');
     const errors = {};
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);

@@ -1,6 +1,8 @@
 import { editProfileAction } from '../../../actions/editProfileAction';
+import useAuth from '../../../hooks/useAuth';
 import useTheme from '../../../hooks/useTheme';
 import { initState } from '../../../store';
+import Input from '../../UI/Input';
 import style from '../EditProfile/EditProfile.module.css';
 import { useActionState } from 'react';
 
@@ -8,7 +10,7 @@ import { useActionState } from 'react';
 const EditProfile = () => {
     const { textColor, bgColor, formBorder } = useTheme();
     const [state, formAction, isPending] = useActionState(editProfileAction, initState);
-
+    const [user] = useAuth();
 
     return (
         <div className={style.container} >
@@ -28,25 +30,27 @@ const EditProfile = () => {
             >
                 <div className={style.inputGroup}>
                     <label htmlFor="email">Email</label>
-                    <input
+                    <Input
                         type="email"
                         id="email"
                         placeholder="Enter your email"
                         required
-                        defaultValue={state.values.email}
+                        defaultValue={state.values.email || user.email}
                         name='email'
                     />
+
                 </div>
 
                 <div className={style.inputGroup}>
                     <label htmlFor="password">Password</label>
-                    <input
+                    <Input
                         type="password"
                         id="password"
                         placeholder="Enter your password"
                         defaultValue={state.values.password}
                         name='password'
                     />
+
                 </div>
                 <button
                     type="submit"

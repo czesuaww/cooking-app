@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import ThemeContext from './components/context/ThemeContext';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import PropertiesContext from './components/context/PropertiesContext';
 import AuthContext from './components/context/AuthContext';
 import useLocalStorage from './hooks/useLocalStorage';
