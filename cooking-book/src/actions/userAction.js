@@ -1,4 +1,4 @@
-export async function loginAction(prevState, formData) {
+export async function userAction(prevState, formData) {
     await new Promise(res => setTimeout(res, 1000));
     const email = formData.get('email');
     const password = formData.get('password');
@@ -10,7 +10,7 @@ export async function loginAction(prevState, formData) {
         errors.email = 'Invalid email';
     }
 
-    if (password.trim().length < 4) {
+    if (password.trim().length < 6) {
         errors.password = 'Password is to short';
     }
     if (Object.keys(errors).length > 0) {

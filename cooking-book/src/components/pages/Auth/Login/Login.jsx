@@ -3,13 +3,13 @@ import useTheme from '../../../../hooks/useTheme';
 import style from '../Login/Login.module.css';
 import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router';
-import { loginAction } from '../../../../actions/loginAction';
+import { userAction } from '../../../../actions/userAction';
 import { initState } from '../../../../store';
 import Input from '../../../UI/Input';
 
 const Login = () => {
     const { textColor, bgColor, formBorder } = useTheme();
-    const [state, formActom, isPending] = useActionState(loginAction, initState)
+    const [state, formActom, isPending] = useActionState(userAction, initState)
     const [, setUser] = useAuth();
 
     const navigate = useNavigate();

@@ -60,3 +60,9 @@
 .loginBtn:hover {
     background-color: var(--active-color);
 }
+
+.error {
+    text-align: center;
+    color: var(--error-color);
+    font-size: 2.7rem;
+}
