@@ -16,7 +16,6 @@ const MyRecepies = () => {
 
         try {
             await axios.delete(`recepies/${id}.json`)
-            console.log(id)
             setRecepies(recepies.filter(x => x.id !== id))
         } catch (er) {
             console.error('Something went wrong', er)
