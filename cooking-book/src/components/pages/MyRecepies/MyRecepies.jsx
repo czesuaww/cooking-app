@@ -11,13 +11,25 @@ const MyRecepies = () => {
     const [recepies, setRecepies] = useState([]);
     const { textColor, bgColor } = useTheme()
 
-    const getData = async () => {
-        const res = await axios.get('/recepies.json');
-        const myRecepies = objectToArrayWithId(res.data).filter(recepie => recepie.userId === user.localId)
-        setRecepies(myRecepies)
-    }
+    const deleteHandler = async (id) => {
+        if (!window.confirm('Do you want to delete this recepie?')) return;
 
+        try {
+            await axios.delete(`recepies/${id}.json`)
+            console.log(id)
+            setRecepies(recepies.filter(x => x.id !== id))
+        } catch (er) {
+            console.error('Something went wrong', er)
+        }
+
+    }
     useEffect(() => {
+        const getData = async () => {
+            const res = await axios.get('/recepies.json');
+            const myRecepies = objectToArrayWithId(res.data).filter(recepie => recepie.userId === user.localId)
+            setRecepies(myRecepies)
+        }
+
         getData();
     }, [])
 
@@ -48,7 +60,7 @@ const MyRecepies = () => {
                                     </Link>
                                     <button
                                         className={`${style.btn} ${style.deleteBtn}`}
-                                        onClick={() => console.log('Delete', recepie.id)}
+                                        onClick={() => deleteHandler(recepie.id)}
                                     >
                                         DELETE
                                     </button>

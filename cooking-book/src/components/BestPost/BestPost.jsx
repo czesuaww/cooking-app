@@ -38,7 +38,7 @@ const BestPost = () => {
                     <p className={style.extra}>{randomRecipe.ingredients}</p>
                 </div>
             ) : (
-                <p className={style.info}>No recipes found in database.</p>
+                null
             )}
         </div>
     );
