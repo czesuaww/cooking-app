@@ -8,16 +8,25 @@ import { useActionState } from 'react';
 
 
 const EditProfile = () => {
-    const { textColor, bgColor, formBorder } = useTheme();
-    const [state, formAction, isPending] = useActionState(editProfileAction, initState);
     const [user] = useAuth();
+    const { textColor, bgColor, formBorder } = useTheme();
+    const actionFn = (prevState, formData) => editProfileAction(prevState, formData, user.idToken);
+    const [state, formAction, isPending] = useActionState(actionFn, initState);
 
     return (
         <div className={style.container} >
-            {state.succes === false && (
-                <div className={style.error}>{state.error.join('. ')}</div>
+            {/* {state.success === false && state.error?.general && (
+                <div className={style.error}>
+                    {typeof state.error.general === 'string' ? state.error.general : "Error occurred"}
+                </div>
             )}
-            {state.succes === true && (
+             */}
+            {state.success === false && state.errors?.general &&
+                <div className={style.error}>
+                    {state.errors.general}
+                </div>
+            }
+            {state.success === true && (
                 <div className={style.succes}>Saved!</div>
             )}
             <form action={formAction}

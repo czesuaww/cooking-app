@@ -1,58 +1,22 @@
 import Input from '../../../UI/Input';
 import style from '../Register/Register.module.css';
-import axiosAuth from '../../../../axiosAuth';
 import { useNavigate } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import { initState } from '../../../../store';
+import { registerAction } from '../../../../actions/registerAction';
 
 const Register = () => {
     const navigate = useNavigate();
     const [, setUser] = useAuth();
+    const [state, formData, isPending] = useActionState(registerAction, initState);
 
-    const sendData = async (prevState, formData) => {
-        const email = formData.get('email');
-        const password = formData.get('password');
-
-        if (!email || !password) {
-            return {
-                success: false,
-                error: { general: "Please fill in all fields" },
-                values: { email, password }
-            }
-        }
-
-        try {
-            const res = await axiosAuth.post('/accounts:signUp', { email: email, password: password, returnSecureToken: true });
-            setUser(true, res.data);
+    useEffect(() => {
+        if (state.success && state.data) {
+            setUser(true, state.data);
             navigate('/my-profile');
-            return { success: false, error: {}, values: { email, password } }
-        } catch (err) {
-            const errorMessage = err.response?.data?.error?.message;
-            console.log(errorMessage, "ERROR MESSAGE")
-
-            let newError = { general: 'Something went wrong' };
-
-            if (errorMessage === 'EMAIL_EXISTS') {
-                newError = { email: 'Email exists' }
-            } else if (errorMessage.includes('WEAK_PASSWORD')) {
-                newError = { password: 'Password is too weak, minimum 6 characters' }
-            } else if (errorMessage === 'TOO_MANY_ATTEMPTS_TRY_LATER') {
-                newError = { general: 'Too many attempts! Try again later' }
-            } else if (errorMessage === 'INVALID_EMAIL') {
-                newError = { email: 'Invalid email' }
-            }
-
-            return {
-                success: false,
-                error: newError,
-                values: { email, password }
-            }
         }
-    }
-
-    const [state, formData, isPending] = useActionState(sendData, initState);
-
+    }, [state.success, state.data, setUser, navigate])
 
     return (
         <div className={style.container} >

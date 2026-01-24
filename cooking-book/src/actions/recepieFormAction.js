@@ -13,7 +13,6 @@ export async function recepieFormAction(prevState, formData) {
     Object.entries(data).forEach(([key, value]) => {
         if (typeof value === 'string' && value.trim() === '') {
             errors[key] = 'Required'
-            console.log(errors[key])
         }
 
         if ((value instanceof File && value.size === 0)) {

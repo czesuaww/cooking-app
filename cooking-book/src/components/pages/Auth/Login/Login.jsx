@@ -1,52 +1,25 @@
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import useTheme from '../../../../hooks/useTheme';
 import style from '../Login/Login.module.css';
 import useAuth from '../../../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 import Input from '../../../UI/Input';
-import axiosAuth from '../../../../axiosAuth';
 import { initState } from '../../../../store';
+import { loginAction } from '../../../../actions/loginAction';
 
 const Login = () => {
     const { textColor, bgColor, formBorder } = useTheme();
     const [, setUser] = useAuth();
     const navigate = useNavigate();
 
-    const sendData = async (prevState, formData) => {
-        const email = formData.get('email');
-        const password = formData.get('password');
+    const [state, formAction, isPending] = useActionState(loginAction, initState);
 
-        if (!email || !password) {
-            return {
-                success: false,
-                error: { general: "Please fill in all fields" },
-                values: { email, password }
-            };
-        }
-
-        try {
-            const res = await axiosAuth.post('/accounts:signInWithPassword', { email: email, password: password, returnSecureToken: true });
-            setUser(true, res.data);
+    useEffect(() => {
+        if (state.success && state.data) {
+            setUser(true, state.data);
             navigate('/my-profile');
-            return { success: true, error: {}, values: { email, password } };
-        } catch (err) {
-            const errorMessage = err.response?.data?.error?.message;
-            let newError = { general: 'Something went wrong' };
-
-            if (errorMessage === 'INVALID_LOGIN_CREDENTIALS') {
-                newError = { general: "Accout doesn't exists or is incorrect" }
-            } else if (errorMessage === 'USER_DISABLED') {
-                newError = { general: 'User is disabled' }
-            }
-
-            return {
-                success: false,
-                error: newError,
-                values: { email, password }
-            }
         }
-    }
-    const [state, formAction, isPending] = useActionState(sendData, initState);
+    }, [state.success, state.data, setUser, navigate])
 
     return (
         <div className={style.container} >
