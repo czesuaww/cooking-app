@@ -5,8 +5,9 @@ const Input = (props) => {
         case 'title': return <InputText {...props} />
         case 'password': return <InputText {...props} type='password' />
         case 'email': return <InputText {...props} type='email' />
-        case 'description': return <InputTextAreaDesc {...props} />
-        case 'ingredients': return <InputTextAreaIngredients {...props} />
+        case 'description': return <InputTextArea {...props} />
+        case 'ingredients': return <InputTextArea {...props} />
+        case 'prepare': return <InputTextArea {...props} />
         case 'picture': return <InputFile {...props} />
         default: return <InputText {...props} />
     }
@@ -28,17 +29,7 @@ const InputText = (props) => {
     )
 }
 
-const InputTextAreaDesc = (props) => {
-    return (
-        <div className={style.container}>
-            <label>{props.label}</label>
-            <textarea defaultValue={props.defaultValue} name={props.name} />
-            <h2 className={style.error}>{props.error}</h2>
-        </div>
-    )
-}
-
-const InputTextAreaIngredients = (props) => {
+const InputTextArea = (props) => {
     return (
         <div className={style.container}>
             <label>{props.label}</label>

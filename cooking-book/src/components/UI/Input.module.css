@@ -19,7 +19,8 @@
 }
 
 .container textarea {
-    padding: 2rem;
+    padding: 1rem;
+    min-height: 200px;
     resize: none;
     border-radius: 6px;
 }

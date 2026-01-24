@@ -5,6 +5,7 @@ export async function recepieFormAction(prevState, formData) {
         description: formData.get('description'),
         ingredients: formData.get('ingredients'),
         status: formData.get('status'),
+        prepare: formData.get('prepare'),
         picture: formData.get('picture')
     }
 

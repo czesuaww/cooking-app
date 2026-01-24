@@ -52,7 +52,7 @@ const MyRecepies = () => {
                                 </div>
                                 <div className={style.actions}>
                                     <Link
-                                        // to={`/my-profile/edit/${recepie.id}`}
+                                        to={`/my-profile/edit-recepie/${recepie.id}`}
                                         className={`${style.btn} ${style.editBtn}`}
                                     >
                                         EDIT

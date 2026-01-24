@@ -23,6 +23,7 @@ import Register from './components/pages/Auth/Register/Register';
 import { initState } from './store';
 import axios from './axios';
 import objectToArrayWithId from './lib/objects';
+import EditRecepie from './components/pages/MyRecepies/EditRecepie';
 
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
 
@@ -93,6 +94,7 @@ function App() {
             <Route index element={<EditProfile />} />
             <Route path='recepies' element={<MyRecepies />} />
             <Route path='add-recepie' element={<AddRecepie />} />
+            <Route path='edit-recepie/:id' element={<EditRecepie />} />
           </Route>
         </Route>
         <Route path='*' element={<NotFound />} />

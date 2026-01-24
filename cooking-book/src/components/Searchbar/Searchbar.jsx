@@ -31,7 +31,7 @@ const Searchbar = () => {
                 className={style.search}
                 name="searching"
                 type="text"
-                placeholder="Search recepie e.g. Chicken masala..."
+                placeholder="Search recepie e.g. Vietnamese Chicken Salad..."
                 onChange={search}
                 onKeyDown={enterSearch}
                 value={term}

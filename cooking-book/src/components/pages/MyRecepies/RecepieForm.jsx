@@ -5,6 +5,7 @@ import { initState } from '../../../store';
 import { recepieFormAction } from '../../../actions/recepieFormAction';
 
 const RecepieForm = (props) => {
+
     const [state, formData, isPending] = useActionState(recepieFormAction, initState);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const RecepieForm = (props) => {
                     desc='title'
                     label='Name'
                     type='text'
-                    defaultValue={state.values?.title}
+                    defaultValue={state.values?.title || props.initialValues?.title}
                     error={state.error?.title}
                 />
                 <Input
@@ -29,7 +30,7 @@ const RecepieForm = (props) => {
                     desc='description'
                     label='Description'
                     type='textarea'
-                    defaultValue={state.values?.description}
+                    defaultValue={state.values?.description || props.initialValues?.description}
                     error={state.error?.description}
                 />
                 <Input
@@ -37,15 +38,23 @@ const RecepieForm = (props) => {
                     desc='ingredients'
                     label='Ingredients'
                     type='textarea'
-                    defaultValue={state.values?.ingredients}
+                    defaultValue={state.values?.ingredients || props.initialValues?.ingredients}
                     error={state.error?.ingredients}
+                />
+                <Input
+                    name='prepare'
+                    desc='prepare'
+                    label='How to prepare?'
+                    type='textarea'
+                    defaultValue={state.values?.prepare || props.initialValues?.prepare}
+                    error={state.error?.prepare}
                 />
                 <Input
                     name='picture'
                     desc='picture'
                     label='Picture'
                     type='file'
-                    error={state.error?.picture}
+                    error={state.error?.picture || props.initialValues?.picture}
                     defaultValue={state.values?.picture}
                 />
 
