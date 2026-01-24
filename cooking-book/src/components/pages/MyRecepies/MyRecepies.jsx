@@ -41,7 +41,6 @@ const MyRecepies = () => {
                 <div className={style.listContainer} >
                     <div className={style.listHeader} style={{ background: bgColor, color: textColor }}>
                         <span className={style.headerName}>Name</span>
-                        <span className={style.headerOptions}>Options</span>
                     </div>
 
                     <div className={style.listBody} style={{ background: bgColor }}>

@@ -21,7 +21,6 @@ const Header = () => {
                 <p>
                     Our database grows with you. Be the first to share your secret recipe or search for inspiration from others!
                     <br />
-                    <br />
                     Never lose a great taste again
                 </p>
                 <Arrow />

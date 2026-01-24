@@ -44,10 +44,8 @@ const BestPost = () => {
 
             {randomRecipe ? (
                 <div className={style.glassCard}>
-                    <div className={style.header}>
-                        <span className={style.badge}>Recommendation</span>
-                        <h2 className={style.title}>{randomRecipe.title}</h2>
-                    </div>
+                    <span className={style.header}>Recommendation</span>
+                    <h2 className={style.title}>{randomRecipe.title}</h2>
 
                     <p className={style.description}>
                         {randomRecipe.description}

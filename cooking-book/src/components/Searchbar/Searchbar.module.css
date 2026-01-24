@@ -14,7 +14,7 @@
 .search {
     width: 400px;
     height: 5.5rem;
-    max-width: 50%;
+    max-width: 80%;
     margin-top: 3rem;
     text-align: center;
     border: 3px solid var(--orange-color);
