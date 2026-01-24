@@ -1,11 +1,17 @@
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import Input from '../../UI/Input';
 import style from '../MyRecepies/RecepieForm.module.css';
 import { initState } from '../../../store';
 import { recepieFormAction } from '../../../actions/recepieFormAction';
 
-const RecepieForm = () => {
-    const [state, formData, isPedngin] = useActionState(recepieFormAction, initState);
+const RecepieForm = (props) => {
+    const [state, formData, isPending] = useActionState(recepieFormAction, initState);
+
+    useEffect(() => {
+        if (state.success && state.values) {
+            props.onSubmit(state.values);
+        }
+    }, [state.success, state.values, props]);
 
     return (
         <div className={style.container}>
@@ -35,20 +41,6 @@ const RecepieForm = () => {
                     error={state.error?.ingredients}
                 />
                 <Input
-                    name='status'
-                    desc='status'
-                    label='Status'
-                    type='select'
-                    options={
-                        [
-                            { value: 1, label: 'Active' },
-                            { value: 2, label: 'Hidden' }
-                        ]
-                    }
-                    error={state.error?.status}
-                    defaultValue={state.values?.status}
-                />
-                <Input
                     name='picture'
                     desc='picture'
                     label='Picture'
@@ -58,7 +50,7 @@ const RecepieForm = () => {
                 />
 
                 <div className={style.btnContainer}>
-                    <button className={style.btn}>{isPedngin ? 'Loading' : 'Save'}</button>
+                    <button className={style.btn}>{isPending ? 'Loading' : 'Save'}</button>
                 </div>
             </form>
         </div>

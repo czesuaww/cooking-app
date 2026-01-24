@@ -5,11 +5,13 @@ import useAuth from '../../../../hooks/useAuth';
 import { useActionState, useEffect } from 'react';
 import { initState } from '../../../../store';
 import { registerAction } from '../../../../actions/registerAction';
+import useTheme from '../../../../hooks/useTheme';
 
 const Register = () => {
     const navigate = useNavigate();
     const [, setUser] = useAuth();
     const [state, formData, isPending] = useActionState(registerAction, initState);
+    const { textColor, bgColor, formBorder } = useTheme();
 
     useEffect(() => {
         if (state.success && state.data) {
@@ -23,6 +25,11 @@ const Register = () => {
             <form
                 className={style.registerForm}
                 action={formData}
+                style={{
+                    color: textColor,
+                    background: bgColor,
+                    border: `2px solid ${formBorder}`
+                }}
             >
                 <h2 className={style.title}>Register</h2>
                 <div className={style.inputGroup}>

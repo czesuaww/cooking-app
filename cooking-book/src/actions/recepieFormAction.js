@@ -15,10 +15,6 @@ export async function recepieFormAction(prevState, formData) {
             errors[key] = 'Required'
         }
 
-        if ((value instanceof File && value.size === 0)) {
-            errors[key] = 'Required'
-        }
-
         if (data.status === '') {
             errors[key] = 'Required'
         }
@@ -26,14 +22,14 @@ export async function recepieFormAction(prevState, formData) {
 
     if (Object.values(errors).length > 0) {
         return {
-            succes: false,
+            success: false,
             error: errors,
             values: data
         }
     }
 
     return {
-        succes: true,
+        success: true,
         error: {},
         values: data
     }

@@ -29,21 +29,22 @@ function App() {
   useWebsiteTitle('Main page')
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
   const [theme, setTheme] = useLocalStorage('theme', {
-    color: '#000',
-    background: '#fff',
-    border: '#000'
+    color: '#1a1a1a',
+    background: 'rgba(255,255,255,0.87)',
+    border: '#1a1a1a',
+    hover: '#A7F3D0'
   });
 
   const [state] = useState(initState)
 
   const changeTheme = () => {
     setTheme(prev => {
-      const newBg = prev.background === '#fff' ? '#000' : '#fff';
+      const newBg = prev.background === 'rgba(255,255,255,0.87)' ? '#1a1a1a' : 'rgba(255,255,255,0.87)';
 
       return {
         background: newBg,
-        color: newBg === '#fff' ? '#000' : '#fff',
-        border: newBg === '#fff' ? 'unset' : '#fff'
+        color: newBg === 'rgba(255,255,255,0.87)' ? '#1a1a1a' : 'rgba(255,255,255,0.87)',
+        border: newBg === 'rgba(255,255,255,0.87)' ? 'unset' : 'rgba(255,255,255,0.87)'
       };
     });
   };
