@@ -1,9 +1,18 @@
 .container {
     text-align: center;
+    padding: 0 2rem 2rem;
+
 }
 
+.container h1 {
+    font-size: 2.5rem;
+}
 
 .errorRecepie {
     padding: '40px';
-    color: var(--black-color);
+}
+
+.errorRecepie p {
+    font-size: 2rem;
+    font-weight: bold;
 }

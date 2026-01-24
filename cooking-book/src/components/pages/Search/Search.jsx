@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-
 import Post from "../../Post/Post";
 import useWebsiteTitle from "../../../hooks/useWebsiteTitle";
 import { useSearchParams } from "react-router";
 import style from '../Search/Search.module.css';
-import { postsPL } from "../../../store";
+import useProperties from "../../../hooks/useProperties";
 
 const Search = () => {
     useWebsiteTitle('Searched result')
+    const { allPosts } = useProperties();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchParams] = useSearchParams();
@@ -15,14 +15,14 @@ const Search = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            const filteredPosts = postsPL.filter(post => post.name.toLowerCase().includes(query.toLowerCase()));
+            const filteredPosts = allPosts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
             if (query) {
                 setLoading(true);
                 setPosts(filteredPosts);
                 setLoading(false);
             }
         }, 1500);
-    }, [query])
+    }, [query, allPosts])
 
     if (loading) return <h1 className={style.container}>Loading...</h1>
 

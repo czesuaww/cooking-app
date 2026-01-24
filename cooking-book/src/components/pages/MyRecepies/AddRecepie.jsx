@@ -10,7 +10,6 @@ const AddRecepie = () => {
     const addRecepie = async (values) => {
         await axios.post('/recepies.json', { ...values, userId: user.localId });
         navigate('/my-profile/recepies')
-        console.log(values)
     }
 
     return (

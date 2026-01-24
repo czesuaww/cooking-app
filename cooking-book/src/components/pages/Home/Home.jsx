@@ -26,8 +26,8 @@ const Home = ({ theme }) => {
             </div>
             <BestPost />
             <Searchbar />
-            <div className="empty-state">
-                <h2 style={{ color: theme.color, background: theme.background }}>🔍Enter the name of the dish</h2>
+            <div className={style.empty}>
+                <h2 style={{ color: theme.textColor, background: theme.background }}>🔍Enter the name of the dish</h2>
                 <p style={{ color: theme.color, background: theme.background }}>We'll find the best recipes for you!</p>
             </div>
         </>

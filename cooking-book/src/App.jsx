@@ -3,7 +3,7 @@ import Layout from './components/Layout/Layout';
 import Header from './components/Header/Header';
 import Container from './components/Container/Container';
 import ThemeContext from './components/context/ThemeContext';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import PropertiesContext from './components/context/PropertiesContext';
 import AuthContext from './components/context/AuthContext';
 import useLocalStorage from './hooks/useLocalStorage';
@@ -20,13 +20,39 @@ import EditProfile from './components/pages/EditProfile/EditProfile';
 import MyRecepies from './components/pages/MyRecepies/MyRecepies';
 import AddRecepie from './components/pages/MyRecepies/AddRecepie';
 import Register from './components/pages/Auth/Register/Register';
-import { initState, randomRecepie } from './store';
+import { initState } from './store';
+import axios from './axios';
+import objectToArrayWithId from './lib/objects';
 
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
 
-
 function App() {
   useWebsiteTitle('Main page')
+  const [state, setState] = useState(initState)
+  const [randomRecipe, setRandomRecipe] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('/recepies.json');
+        const transformedData = objectToArrayWithId(res.data);
+
+        setState(prevState => ({
+          ...prevState,
+          poststsAll: transformedData
+        }));
+
+        if (transformedData.length > 0) {
+          const random = transformedData[Math.floor(Math.random() * transformedData.length)];
+          setRandomRecipe(random);
+        }
+      } catch (e) {
+        console.err("Error fetching data", e);
+      }
+    };
+    fetchData();
+  }, []);
+
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
   const [theme, setTheme] = useLocalStorage('theme', {
     color: '#1a1a1a',
@@ -35,7 +61,6 @@ function App() {
     hover: '#A7F3D0'
   });
 
-  const [state] = useState(initState)
 
   const changeTheme = () => {
     setTheme(prev => {
@@ -85,7 +110,7 @@ function App() {
           border: theme.border
         }}>
           <PropertiesContext.Provider value={{
-            randomRecipe: randomRecepie,
+            randomRecipe: randomRecipe, // Teraz bierzemy ze stanu, nie z importu
             allPosts: state.poststsAll
           }}>
             <AuthContext.Provider value={{
@@ -94,11 +119,18 @@ function App() {
               logOut: () => setIsLogged(false)
             }}>
               <Layout
+
                 header={<Header />}
                 container={
-                  <Container >
-                    {content}
-                  </Container>
+                  <div style={{
+                    background: theme.background,
+                    minHeight: '100vh',
+                    color: theme.color,
+                  }}>
+                    <Container >
+                      {content}
+                    </Container>
+                  </div>
                 }
               >
               </Layout>

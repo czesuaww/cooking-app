@@ -28,4 +28,7 @@ html {
   --succes-color: #1ea81e;
   --border-color: #eee;
   --hover-white: #fafafa;
+  --dark-theme: rgba(255, 255, 255, 0.05);
+  --sub-color: #8b949e;
+  --light-dark-theme: rgba(0, 0, 0, 0.2);
 }

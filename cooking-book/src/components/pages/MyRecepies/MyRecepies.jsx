@@ -4,14 +4,17 @@ import axios from "../../../axios";
 import { useEffect, useState } from "react";
 import objectToArrayWithId from "../../../lib/objects";
 import useTheme from "../../../hooks/useTheme";
+import useAuth from "../../../hooks/useAuth";
 
 const MyRecepies = () => {
+    const [user] = useAuth();
     const [recepies, setRecepies] = useState([]);
     const { textColor, bgColor } = useTheme()
 
     const getData = async () => {
         const res = await axios.get('/recepies.json');
-        setRecepies(objectToArrayWithId(res.data))
+        const myRecepies = objectToArrayWithId(res.data).filter(recepie => recepie.userId === user.localId)
+        setRecepies(myRecepies)
     }
 
     useEffect(() => {

@@ -17,10 +17,12 @@ const Header = () => {
                 <img src={img3} alt="picture three" />
             </div>
             <div className={styles.heroText}>
-                <h1>Looking for some recepies?</h1>
-                <p>You've come to the perfect place.
+                <h1>The Shared Table</h1>
+                <p>
+                    Our database grows with you. Be the first to share your secret recipe or search for inspiration from others!
                     <br />
-                    I invite you to search for the best recipes
+                    <br />
+                    Never lose a great taste again
                 </p>
                 <Arrow />
             </div>

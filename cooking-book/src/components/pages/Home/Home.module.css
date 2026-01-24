@@ -33,6 +33,22 @@
      font-size: 10rem;
  }
 
+ .empty {
+     margin: 0 auto;
+     text-align: center;
+
+
+ }
+
+ .empty h2 {
+     font-size: 3rem;
+ }
+
+ .empty p {
+     font-size: 2rem;
+     padding-bottom: 2rem;
+ }
+
  @media screen and (min-width: 600px) {
      .aboutContainer {
          flex-direction: row;

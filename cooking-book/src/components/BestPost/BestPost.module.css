@@ -1,5 +1,62 @@
 .container {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.glassCard {
+    background: var(--dark-theme);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glassCard:hover {
+    transform: translateY(-2px);
+}
+
+.header {
+    margin-bottom: 12px;
+    text-align: center;
+
+}
+
+.badge {
+    color: var(--succes-color);
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.title {
+    margin: 5px 0 0 0;
+    font-size: 2.5rem;
+}
+
+.description {
+    font-size: 2rem;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.extra {
+    font-size: 2rem;
+    opacity: 0.6;
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+}
+
+.info {
+    opacity: 0.5;
+    font-size: 0.9rem;
 }

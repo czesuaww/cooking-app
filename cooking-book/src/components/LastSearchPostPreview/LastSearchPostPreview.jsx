@@ -1,27 +1,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import style from '../LastSearchPostPreview/LastSearchPostPreview.module.css';
-import { initState } from "../../store";
+import useProperties from "../../hooks/useProperties";
 
 const LastSearchPostPreview = () => {
     const { id } = useParams();
     const [post, setPost] = useState(null);
+    const { allPosts } = useProperties();
 
     useEffect(() => {
-        const foundPost = initState.poststsAll.find(x => x.id === Number(id));
-        setTimeout(() => {
+        if (allPosts && allPosts.length > 0) {
+            const foundPost = allPosts.find(x => String(x.id) === String(id));
             setPost(foundPost);
-        }, 1000)
-    }, [id])
+        }
+    }, [id, allPosts])
 
     if (!post) return <h1 className={style.container}>Searching...</h1>;
 
     return (
         <div className={style.container}>
-            <h1>Here's the recipe you searched for recently. Enjoy! ;p</h1>
-            <h2>{post.name}</h2>
-            <p>{post.shortContent}</p>
-            <p>{post.longContent}</p>
+            <div className={style.glassCard}>
+                <span className={style.badge}>Last viewed</span>
+                <h1 className={style.mainTitle}>Enjoy your meal! ;p</h1>
+
+                <div className={style.recipeDetail}>
+                    <h2 className={style.title}>Title: <br /> {post.title}</h2>
+                    <p className={style.description}>Description: <br />{post.description}</p>
+                    <p className={style.ingredients}>Ingredients: <br />{post.ingredients}</p>
+                </div>
+            </div>
         </div>
     )
 }

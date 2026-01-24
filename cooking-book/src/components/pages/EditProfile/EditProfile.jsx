@@ -15,12 +15,6 @@ const EditProfile = () => {
 
     return (
         <div className={style.container} >
-            {/* {state.success === false && state.error?.general && (
-                <div className={style.error}>
-                    {typeof state.error.general === 'string' ? state.error.general : "Error occurred"}
-                </div>
-            )}
-             */}
             {state.success === false && state.errors?.general &&
                 <div className={style.error}>
                     {state.errors.general}

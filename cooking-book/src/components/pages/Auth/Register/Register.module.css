@@ -54,7 +54,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .loginBtn:hover {
