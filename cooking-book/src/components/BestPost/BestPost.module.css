@@ -43,20 +43,7 @@
 }
 
 .description {
-    font-size: 2rem;
+    font-size: 1.6rem;
     opacity: 0.9;
     margin-bottom: 10px;
-}
-
-.extra {
-    font-size: 2rem;
-    opacity: 0.6;
-    font-style: italic;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 10px;
-}
-
-.info {
-    opacity: 0.5;
-    font-size: 0.9rem;
 }
