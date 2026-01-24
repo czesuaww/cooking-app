@@ -36,8 +36,6 @@
  .empty {
      margin: 0 auto;
      text-align: center;
-
-
  }
 
  .empty h2 {
@@ -66,5 +64,4 @@
      .icons {
          font-size: 12rem;
      }
-
  }

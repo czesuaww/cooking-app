@@ -1,7 +1,7 @@
 import style from '../Post/Post.module.css'
 
 const Post = (props) => {
-    const { title, description, ingredients } = props;
+    const { title, description, ingredients, prepare } = props;
 
     return (
         <div className={style.postCard}>
@@ -14,6 +14,8 @@ const Post = (props) => {
                     <div className={style.ingredientsSection}>
                         <span className={style.label}>Ingredients:</span>
                         <p className={style.ingredientsText}>{ingredients}</p>
+                        <span className={style.label}>How to prepare:</span>
+                        <p className={style.prepareText}>{prepare}</p>
                     </div>
                 )}
             </div>

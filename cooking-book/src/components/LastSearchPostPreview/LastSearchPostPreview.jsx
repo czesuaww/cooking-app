@@ -33,8 +33,9 @@ const LastSearchPostPreview = () => {
 
                 <div className={style.recipeDetail}>
                     <h2 className={style.title}>Title: <br /> {post.title}</h2>
-                    <p className={style.description}>Description: <br />{post.description}</p>
-                    <p className={style.ingredients}>Ingredients: <br />{post.ingredients}</p>
+                    <p className={style.description}><strong>Description:</strong> <br />{post.description}</p>
+                    <p className={style.ingredients}><strong>Ingredients:</strong> <br />{post.ingredients}</p>
+                    <p className={style.prepare}><strong>How to prepare:</strong> <br />{post.prepare}</p>
                 </div>
             </div>
         </div>

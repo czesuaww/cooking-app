@@ -42,6 +42,14 @@ const RecepieForm = (props) => {
                     error={state.error?.ingredients}
                 />
                 <Input
+                    name='prepare'
+                    desc='prepare'
+                    label='How to prepare'
+                    type='textarea'
+                    defaultValue={state.values?.prepare || props.initialValues?.prepare}
+                    error={state.error?.prepare}
+                />
+                <Input
                     name='picture'
                     desc='picture'
                     label='Picture'

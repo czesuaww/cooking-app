@@ -1,10 +1,10 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2rem;
     align-items: center;
     width: 100%;
-    padding: 20px;
+    padding: 2rem;
 }
 
 .glassCard {
@@ -12,7 +12,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 20px 30px;
+    padding: 2rem 3rem;
     width: 100%;
     max-width: 500px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -24,7 +24,7 @@
 }
 
 .header {
-    margin-bottom: 12px;
+    margin-bottom: 1.2rem;
     text-align: center;
 
 }
@@ -33,7 +33,7 @@
     color: var(--succes-color);
     font-size: 3rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.5rem;
     font-weight: bold;
 }
 
@@ -45,5 +45,5 @@
 .description {
     font-size: 1.6rem;
     opacity: 0.9;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
