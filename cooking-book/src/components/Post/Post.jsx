@@ -1,4 +1,3 @@
-import useAuth from "../../hooks/useAuth";
 import style from '../Post/Post.module.css'
 
 const Post = (props) => {

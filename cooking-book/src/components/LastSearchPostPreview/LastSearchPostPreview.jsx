@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import style from '../LastSearchPostPreview/LastSearchPostPreview.module.css';
-import useProperties from "../../hooks/useProperties";
+import objectToArrayWithId from "../../lib/objects";
+import axios from "../../axios";
 
 const LastSearchPostPreview = () => {
     const { id } = useParams();
     const [post, setPost] = useState(null);
-    const { allPosts } = useProperties();
 
     useEffect(() => {
-        if (allPosts && allPosts.length > 0) {
-            const foundPost = allPosts.find(x => String(x.id) === String(id));
-            setPost(foundPost);
+        const getData = async () => {
+            try {
+                const res = await axios.get('/recepies.json');
+                const foundPost = objectToArrayWithId(res.data)
+                    .find(x => String(x.id) === String(id));
+                setPost(foundPost);
+            } catch (err) {
+                console.error("WRONG SEARCH: ", err)
+            }
         }
-    }, [id, allPosts])
+        getData();
+    }, [id])
+
 
     if (!post) return <h1 className={style.container}>Searching...</h1>;
 

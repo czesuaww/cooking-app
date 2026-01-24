@@ -20,39 +20,22 @@ import EditProfile from './components/pages/EditProfile/EditProfile';
 import MyRecepies from './components/pages/MyRecepies/MyRecepies';
 import AddRecepie from './components/pages/MyRecepies/AddRecepie';
 import Register from './components/pages/Auth/Register/Register';
-import { initState } from './store';
-import axios from './axios';
-import objectToArrayWithId from './lib/objects';
 import EditRecepie from './components/pages/MyRecepies/EditRecepie';
+import { random } from './lib/random';
 
 const Profile = lazy(() => import('./components/pages/Profile/Profile'));
 
 function App() {
   useWebsiteTitle('Main page')
-  const [state, setState] = useState(initState)
   const [randomRecipe, setRandomRecipe] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get('/recepies.json');
-        const transformedData = objectToArrayWithId(res.data);
-
-        setState(prevState => ({
-          ...prevState,
-          poststsAll: transformedData
-        }));
-
-        if (transformedData.length > 0) {
-          const random = transformedData[Math.floor(Math.random() * transformedData.length)];
-          setRandomRecipe(random);
-        }
-      } catch (e) {
-        console.err("Error fetching data", e);
-      }
-    };
-    fetchData();
-  }, []);
+    const getData = async () => {
+      const res = await random();
+      setRandomRecipe(res)
+    }
+    getData();
+  }, [])
 
   const [isLogged, setIsLogged] = useLocalStorage('log', false);
   const [theme, setTheme] = useLocalStorage('theme', {
@@ -112,8 +95,7 @@ function App() {
           border: theme.border
         }}>
           <PropertiesContext.Provider value={{
-            randomRecipe: randomRecipe, // Teraz bierzemy ze stanu, nie z importu
-            allPosts: state.poststsAll
+            randomRecipe: randomRecipe,
           }}>
             <AuthContext.Provider value={{
               isLogged: isLogged,

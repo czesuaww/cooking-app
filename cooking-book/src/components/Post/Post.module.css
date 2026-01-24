@@ -18,14 +18,13 @@
 }
 
 .description {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
     opacity: 0.9;
 }
 
 .ingredientsSection {
-    background: var(--light-dark-theme);
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1.5rem;

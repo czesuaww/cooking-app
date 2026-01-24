@@ -6,7 +6,7 @@ const LastSearchPostMain = (props) => {
         <div className={style.banner}>
             <div className={style.content}>
                 <h2 className={style.title}>
-                    You recently searched: <span className={style.highlight}>{props.lastRec.title}</span>
+                    You recently searched: <br /> <span className={style.highlight}>{props.lastRec.title}</span>
                 </h2>
                 <p className={style.subtitle}>Do you want to see it again?</p>
 

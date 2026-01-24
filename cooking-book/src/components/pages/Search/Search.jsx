@@ -3,26 +3,33 @@ import Post from "../../Post/Post";
 import useWebsiteTitle from "../../../hooks/useWebsiteTitle";
 import { useSearchParams } from "react-router";
 import style from '../Search/Search.module.css';
-import useProperties from "../../../hooks/useProperties";
+import axios from "../../../axios";
+import objectToArrayWithId from "../../../lib/objects";
 
 const Search = () => {
     useWebsiteTitle('Searched result')
-    const { allPosts } = useProperties();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchParams] = useSearchParams();
     const query = searchParams.get('fraze')
 
     useEffect(() => {
-        setTimeout(() => {
-            const filteredPosts = allPosts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
-            if (query) {
-                setLoading(true);
+        const getData = async () => {
+            setLoading(true);
+            try {
+                const res = await axios.get('/recepies.json');
+                const filteredPosts = objectToArrayWithId(res.data)
+                    .filter(post => post.title.toLowerCase()
+                        .includes(query.toLowerCase()));
+
                 setPosts(filteredPosts);
                 setLoading(false);
+            } catch (err) {
+                console.error("WRONG SEARCH: ", err)
             }
-        }, 1500);
-    }, [query, allPosts])
+        }
+        getData();
+    }, [query])
 
     if (loading) return <h1 className={style.container}>Loading...</h1>
 

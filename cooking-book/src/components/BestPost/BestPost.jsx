@@ -2,24 +2,42 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import useProperties from "../../hooks/useProperties";
 import LastSearchPostMain from "../LastSearchPostMain/LastSearchPostMain";
 import style from '../BestPost/BestPost.module.css';
+import { useEffect, useState } from "react";
+import axios from "../../axios";
+import objectToArrayWithId from "../../lib/objects";
 
 const BestPost = () => {
-    const { randomRecipe, allPosts } = useProperties();
+    const { randomRecipe } = useProperties();
     const [lastSearch, setLastSearch] = useLocalStorage('last-search', null);
+    const [fetchedRecipe, setFetchedRecipe] = useState(null);
 
-    const handleNo = () => setLastSearch(null);
+    useEffect(() => {
+        const getData = async () => {
+            if (!lastSearch) return;
 
-    const lastFoundRandomRecipe = (lastSearch && allPosts.length > 0)
-        ? allPosts.find(post =>
-            (post.title)?.toLowerCase().includes(lastSearch.toLowerCase())
-        )
-        : null;
+            try {
+                const res = await axios.get(`/recepies.json`);
+                const allData = objectToArrayWithId(res.data);
+                const lastSearched = allData.find(post => post.title?.toLowerCase().includes(lastSearch.toLowerCase()));
+
+                setFetchedRecipe(lastSearched);
+            } catch (err) {
+                console.error('ERROR GET DATA:', err);
+            }
+        }
+        getData();
+    }, [lastSearch]);
+
+    const handleNo = () => {
+        setLastSearch(null);
+        setFetchedRecipe(null);
+    };
 
     return (
         <div className={style.container}>
-            {lastSearch && lastFoundRandomRecipe && (
+            {lastSearch && fetchedRecipe && (
                 <LastSearchPostMain
-                    lastRec={lastFoundRandomRecipe}
+                    lastRec={fetchedRecipe}
                     onNo={handleNo}
                 />
             )}
@@ -34,8 +52,6 @@ const BestPost = () => {
                     <p className={style.description}>
                         {randomRecipe.description}
                     </p>
-
-                    <p className={style.extra}>{randomRecipe.ingredients}</p>
                 </div>
             ) : (
                 null

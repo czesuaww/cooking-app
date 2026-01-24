@@ -14,7 +14,6 @@ const Input = (props) => {
 
 }
 
-
 const InputText = (props) => {
     return (
         <div className={style.container}>
