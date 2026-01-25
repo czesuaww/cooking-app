@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { useState } from 'react';
 
 const Searchbar = () => {
-    const [term, setTerm] = useLocalStorage('query', '');
+    const [term, setTerm] = useState('');
     const [, setLastSearch] = useLocalStorage('last-search', null);
     const navigate = useNavigate();
     const [error, setError] = useState(false);

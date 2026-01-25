@@ -15,6 +15,8 @@
  .header {
      text-align: center;
      font-size: 5rem;
+     font-family: "Caveat", cursive;
+
  }
 
  .iconItem {
@@ -34,16 +36,17 @@
  }
 
  .empty {
+     font-family: "Caveat", cursive;
      margin: 0 auto;
      text-align: center;
  }
 
  .empty h2 {
-     font-size: 3rem;
+     font-size: 3.5rem;
  }
 
  .empty p {
-     font-size: 2rem;
+     font-size: 2.5rem;
      padding-bottom: 2rem;
  }
 

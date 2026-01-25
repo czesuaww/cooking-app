@@ -20,10 +20,11 @@
 .highlight {
     color: var(--succes-color);
     font-weight: bold;
+    font-family: "Caveat", cursive;
 }
 
 .subtitle {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: var(--sub-color);
     margin-bottom: 2rem;
 }

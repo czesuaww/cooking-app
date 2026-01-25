@@ -42,3 +42,9 @@ li {
     font-weight: bold;
     background-color: var(--active-color);
 }
+
+@media screen and (min-width: 700px) {
+    .btn {
+        font-size: 2.2rem;
+    }
+}

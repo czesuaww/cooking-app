@@ -16,6 +16,7 @@
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 3rem;
+    font-family: "Caveat", cursive;
 }
 
 .inputGroup {
@@ -23,7 +24,7 @@
 }
 
 .inputGroup label {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
 }
 
 .inputGroup input {

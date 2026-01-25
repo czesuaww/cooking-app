@@ -64,6 +64,7 @@
     margin: 0 0 2rem 0;
     font-weight: bold;
     color: var(--orange-color);
+    font-family: "Caveat", cursive;
 }
 
 .heroText p {
