@@ -1,4 +1,4 @@
-Project Documentation: Cooking App
+Cooking App
 Live Demo: https://cooking-react-811f4.web.app/
 
 Project Overview
